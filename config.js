@@ -1,1 +1,0 @@
-window.TOKENMAXX_CONFIG = {};

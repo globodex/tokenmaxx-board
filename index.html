@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tokenmaxx Board</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css?v=globodex-sync">
   </head>
   <body>
     <main class="page-shell">
       <header class="site-header">
         <a class="brand" href="#top" aria-label="Tokenmaxx Board home">Tokenmaxx Board</a>
         <nav aria-label="Page sections">
-          <a class="active" href="#top">Join</a>
+          <a class="active" href="#top">Setup</a>
           <a href="#leaderboard">Leaderboard</a>
-          <a href="#howItWorks">How it works</a>
+          <a href="#howItWorks">Sync</a>
         </nav>
         <button class="reset-button" id="resetBoard" type="button" aria-label="Reset demo board" title="Reset demo board">
           Reset
@@ -22,20 +22,40 @@
 
       <section class="landing-hero" id="top" aria-label="Join Tokenmaxx Board">
         <div class="hero-copy">
-          <p class="eyebrow">Unofficial Codex ambassador league</p>
-          <h1>Tokenmaxx Board</h1>
+          <p class="eyebrow">Globodex Codex ambassador league</p>
+          <h1>Codex ambassador standings</h1>
           <p class="hero-lede">
-            Ranked Codex ambassadors, updated from the stats already visible on each profile.
+            A public leaderboard for ambassadors who join Globodex, bring projects into the org, and keep their visible Codex stats current.
           </p>
         </div>
 
-        <div class="command-panel" aria-label="Codex update command">
-          <div class="command-label">
-            <span>Codex command</span>
-          <strong>Join leaderboard</strong>
-        </div>
-          <code id="joinCommand"><span>/update-stats</span> <span>@your.handle</span></code>
-          <button class="copy-button" id="copyCommand" type="button">Copy</button>
+        <div class="sync-panel" aria-label="Codex profile sync flows">
+          <p class="panel-kicker">Participate</p>
+          <h2>Set up once. Sync after that.</h2>
+          <div class="flow-list">
+            <article class="flow-card">
+              <span>First-time</span>
+              <h3>Claim your row</h3>
+              <p>Join Globodex, upload a Codex profile screenshot, and add an optional location or flag.</p>
+              <div class="inline-command">
+                <code id="setupCommand">/update-stats setup</code>
+                <button class="copy-button" type="button" data-copy-target="#setupCommand">Copy</button>
+              </div>
+            </article>
+
+            <article class="flow-card primary-flow">
+              <span>Returning</span>
+              <h3>Refresh stats</h3>
+              <p>Upload the latest profile screenshot and run the same command to update your numbers.</p>
+              <div class="inline-command">
+                <code id="joinCommand">/update-stats</code>
+                <button class="copy-button" id="copyCommand" type="button">Copy</button>
+              </div>
+            </article>
+          </div>
+          <p class="membership-note">
+            <a href="https://github.com/globodex">Globodex GitHub org</a> membership is required to participate.
+          </p>
         </div>
       </section>
 
@@ -44,13 +64,14 @@
           <div class="section-heading">
             <div>
               <p class="eyebrow">Leaderboard</p>
-              <h2>Current standings</h2>
+              <h2>Rankings</h2>
             </div>
             <div class="sort-control" role="group" aria-label="Sort leaderboard">
-              <button class="sort-button active" type="button" data-sort="score">Score</button>
-              <button class="sort-button" type="button" data-sort="lifetimeTokens">Lifetime</button>
+              <button class="sort-button active" type="button" data-sort="lifetimeTokens">Lifetime</button>
               <button class="sort-button" type="button" data-sort="peakTokens">Peak</button>
-              <button class="sort-button" type="button" data-sort="currentStreak">Streak</button>
+              <button class="sort-button" type="button" data-sort="longestTaskMinutes">Task</button>
+              <button class="sort-button" type="button" data-sort="currentStreak">Current</button>
+              <button class="sort-button" type="button" data-sort="longestStreak">Longest</button>
             </div>
           </div>
           <div class="table-wrap">
@@ -64,7 +85,6 @@
                   <th scope="col">Task</th>
                   <th scope="col">Current</th>
                   <th scope="col">Longest</th>
-                  <th scope="col">Score</th>
                 </tr>
               </thead>
               <tbody id="leaderboardRows"></tbody>
@@ -72,50 +92,11 @@
           </div>
         </section>
 
-        <aside class="side-stack">
-          <article class="featured-card" aria-label="Featured ambassador">
-          <div class="profile-shot-header">
-            <div>
-              <p class="featured-kicker">Top ambassador</p>
-              <h2 id="featuredName">Tokenmaxx Board</h2>
-              <p class="handle" id="featuredHandle">@tokenmaxx</p>
-            </div>
-            <div class="score-pill">
-              <span>Score</span>
-              <strong id="featuredScore">0</strong>
-            </div>
-          </div>
-
-          <div class="stat-capsule" aria-label="Featured profile stats">
-            <article>
-              <strong id="featuredLifetime">0</strong>
-              <span>Lifetime tokens</span>
-            </article>
-            <article>
-              <strong id="featuredPeak">0</strong>
-              <span>Peak tokens</span>
-            </article>
-            <article>
-              <strong id="featuredTask">0h</strong>
-              <span>Longest task</span>
-            </article>
-            <article>
-              <strong id="featuredCurrentStreak">0 days</strong>
-              <span>Current streak</span>
-            </article>
-            <article>
-              <strong id="featuredLongestStreak">0 days</strong>
-              <span>Longest streak</span>
-            </article>
-          </div>
-          </article>
-
-          <section class="participation-card" aria-label="Participation command details">
-            <h2>Run one command</h2>
-            <p id="howItWorks">The project command reads the visible Codex profile stats you provide, then updates the persistent database when Supabase credentials are present.</p>
-            <code>node scripts/update-profile.mjs --name "Ada Launch" --handle "@ada.launch" --lifetime 12.4B --peak 1.3B --task "17h 42m" --current 42 --longest 58</code>
-          </section>
-        </aside>
+        <section class="participation-card" aria-label="Participation command details">
+          <h2>Profile management</h2>
+          <p id="howItWorks">First-time ambassadors use `/update-stats setup` to create a row with optional location metadata. Returning ambassadors use `/update-stats` to refresh only the five visible stats. Codex syncs the shared JSON file in the Globodex repo through GitHub.</p>
+          <code>npm run sync:profile -- --name "Ada Launch" --handle "@ada.launch" --location "San Francisco" --flag "🇺🇸" --lifetime 12.4B --peak 1.3B --task "17h 42m" --current 42 --longest 58</code>
+        </section>
       </section>
 
       <footer>
@@ -123,7 +104,6 @@
       </footer>
     </main>
 
-    <script src="./config.js"></script>
-    <script src="./app.js" type="module"></script>
+    <script src="./app.js?v=globodex-sync" type="module"></script>
   </body>
 </html>

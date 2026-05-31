@@ -1,11 +1,12 @@
 const DATA_URL = "./data/profiles.json";
-const config = window.TOKENMAXX_CONFIG || {};
 
 const fallbackProfiles = [
   {
     id: "ada-launch",
     name: "Ada Launch",
     handle: "@ada.launch",
+    location: "San Francisco",
+    flag: "🇺🇸",
     lifetimeTokens: 12400000000,
     peakTokens: 1300000000,
     longestTaskMinutes: 1062,
@@ -17,6 +18,8 @@ const fallbackProfiles = [
     id: "max-demo",
     name: "Max Demo",
     handle: "@max.demo",
+    location: "New York",
+    flag: "🇺🇸",
     lifetimeTokens: 9800000000,
     peakTokens: 1100000000,
     longestTaskMinutes: 860,
@@ -28,6 +31,8 @@ const fallbackProfiles = [
     id: "jules-merge",
     name: "Jules Merge",
     handle: "@jules.merge",
+    location: "London",
+    flag: "🇬🇧",
     lifetimeTokens: 8100000000,
     peakTokens: 980000000,
     longestTaskMinutes: 965,
@@ -39,6 +44,8 @@ const fallbackProfiles = [
     id: "riley-triage",
     name: "Riley Triage",
     handle: "@riley.triage",
+    location: "Toronto",
+    flag: "🇨🇦",
     lifetimeTokens: 6600000000,
     peakTokens: 760000000,
     longestTaskMinutes: 738,
@@ -53,23 +60,13 @@ let sourceProfiles = {
   updatedAt: "1970-01-01T00:00:00.000Z",
   profiles: fallbackProfiles
 };
-let sortKey = "score";
-let featuredProfileId = null;
+let sortKey = "lifetimeTokens";
 
 const rows = document.querySelector("#leaderboardRows");
 const resetButton = document.querySelector("#resetBoard");
 const copyButton = document.querySelector("#copyCommand");
 const joinCommand = document.querySelector("#joinCommand");
 const sortButtons = [...document.querySelectorAll(".sort-button")];
-const featuredAvatar = document.querySelector("#featuredAvatar");
-const featuredName = document.querySelector("#featuredName");
-const featuredHandle = document.querySelector("#featuredHandle");
-const featuredScore = document.querySelector("#featuredScore");
-const featuredLifetime = document.querySelector("#featuredLifetime");
-const featuredPeak = document.querySelector("#featuredPeak");
-const featuredTask = document.querySelector("#featuredTask");
-const featuredCurrentStreak = document.querySelector("#featuredCurrentStreak");
-const featuredLongestStreak = document.querySelector("#featuredLongestStreak");
 
 async function loadProfiles() {
   sourceProfiles = await loadSourceProfiles();
@@ -77,9 +74,6 @@ async function loadProfiles() {
 }
 
 async function loadSourceProfiles() {
-  const persistentProfiles = await loadSupabaseProfiles();
-  if (persistentProfiles) return persistentProfiles;
-
   try {
     const response = await fetch(DATA_URL, { cache: "no-store" });
     if (!response.ok) throw new Error(`Unable to load ${DATA_URL}`);
@@ -99,46 +93,6 @@ async function loadSourceProfiles() {
   }
 }
 
-async function loadSupabaseProfiles() {
-  if (!config.supabaseUrl || !config.supabaseAnonKey) return null;
-
-  const url = `${config.supabaseUrl.replace(/\/$/, "")}/rest/v1/profiles?select=*&order=lifetime_tokens.desc`;
-
-  try {
-    const response = await fetch(url, {
-      headers: {
-        apikey: config.supabaseAnonKey,
-        authorization: `Bearer ${config.supabaseAnonKey}`
-      }
-    });
-
-    if (!response.ok) throw new Error("Unable to load persistent profiles");
-    const rows = await response.json();
-    if (!Array.isArray(rows) || rows.length === 0) return null;
-
-    return {
-      updatedAt: rows.reduce((latest, row) => row.updated_at > latest ? row.updated_at : latest, "1970-01-01T00:00:00.000Z"),
-      profiles: rows.map(profileFromSupabase)
-    };
-  } catch {
-    return null;
-  }
-}
-
-function profileFromSupabase(row) {
-  return normalizeProfile({
-    id: row.id,
-    name: row.name,
-    handle: row.handle,
-    lifetimeTokens: row.lifetime_tokens,
-    peakTokens: row.peak_tokens,
-    longestTaskMinutes: row.longest_task_minutes,
-    currentStreak: row.current_streak,
-    longestStreak: row.longest_streak,
-    activitySeed: row.activity_seed
-  });
-}
-
 function normalizeProfile(profile) {
   const name = String(profile.name || "Unnamed profile").trim();
   const id = profile.id || profileId(name);
@@ -149,6 +103,8 @@ function normalizeProfile(profile) {
     id,
     name,
     handle: profile.handle || `@${id}`,
+    location: String(profile.location || "").trim(),
+    flag: String(profile.flag || "").trim(),
     lifetimeTokens,
     peakTokens: Number(profile.peakTokens ?? Math.round(lifetimeTokens * 0.12)),
     longestTaskMinutes,
@@ -188,88 +144,50 @@ function seedFromText(text) {
   return [...text].reduce((sum, char) => sum + char.charCodeAt(0), 0);
 }
 
-function scoreFor(profile) {
-  const lifetimeScore = profile.lifetimeTokens / 10000000;
-  const peakScore = profile.peakTokens / 5000000;
-  const taskScore = profile.longestTaskMinutes * 0.65;
-  const streakScore = profile.currentStreak * 18 + profile.longestStreak * 10;
-  return Math.round(lifetimeScore + peakScore + taskScore + streakScore);
-}
-
 function sortedProfiles() {
   return [...profiles].sort((a, b) => {
     const values = {
-      score: scoreFor(b) - scoreFor(a),
       lifetimeTokens: b.lifetimeTokens - a.lifetimeTokens,
       peakTokens: b.peakTokens - a.peakTokens,
-      currentStreak: b.currentStreak - a.currentStreak
+      currentStreak: b.currentStreak - a.currentStreak,
+      longestTaskMinutes: b.longestTaskMinutes - a.longestTaskMinutes,
+      longestStreak: b.longestStreak - a.longestStreak
     };
 
     return values[sortKey] || a.name.localeCompare(b.name);
   });
 }
 
-function renderFeatured(profile) {
-  featuredProfileId = profile.id;
-  if (featuredAvatar) {
-    featuredAvatar.textContent = profile.name
-      .split(" ")
-      .map((part) => part[0])
-      .join("")
-      .slice(0, 2)
-      .toUpperCase();
-  }
-  featuredName.textContent = profile.name;
-  featuredHandle.textContent = profile.handle;
-  featuredScore.textContent = new Intl.NumberFormat("en-US").format(scoreFor(profile));
-  featuredLifetime.textContent = formatCompact(profile.lifetimeTokens);
-  featuredPeak.textContent = formatCompact(profile.peakTokens);
-  featuredTask.textContent = formatTask(profile.longestTaskMinutes);
-  featuredCurrentStreak.textContent = `${profile.currentStreak} days`;
-  featuredLongestStreak.textContent = `${profile.longestStreak} days`;
-}
-
 function renderRows() {
   rows.innerHTML = "";
+  rows.dataset.sort = sortKey;
 
   sortedProfiles().forEach((profile, index) => {
     const row = document.createElement("tr");
+    const locationText = [profile.flag, profile.location].filter(Boolean).join(" ");
     row.className = "leaderboard-row";
     row.innerHTML = `
       <td data-label="Rank"><span class="rank">${index + 1}</span></td>
       <td data-label="Ambassador">
-        <button class="person" type="button" data-feature="${escapeHtml(profile.id)}" aria-label="Feature ${escapeHtml(profile.name)}">
-          <span class="mini-avatar" aria-hidden="true">${escapeHtml(initialsFor(profile.name))}</span>
+        <div class="person">
           <span>
             <strong>${escapeHtml(profile.name)}</strong>
             <small>${escapeHtml(profile.handle)}</small>
+            ${locationText ? `<small class="location">${escapeHtml(locationText)}</small>` : ""}
           </span>
-        </button>
+        </div>
       </td>
       <td data-label="Lifetime">${formatCompact(profile.lifetimeTokens)}</td>
       <td data-label="Peak">${formatCompact(profile.peakTokens)}</td>
       <td data-label="Task">${formatTask(profile.longestTaskMinutes)}</td>
       <td data-label="Current">${profile.currentStreak} days</td>
       <td data-label="Longest">${profile.longestStreak} days</td>
-      <td class="score" data-label="Score">${new Intl.NumberFormat("en-US").format(scoreFor(profile))}</td>
     `;
     rows.append(row);
   });
 }
 
-function initialsFor(name) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
-
 function render() {
-  const leaders = sortedProfiles();
-  const featuredProfile = profiles.find((profile) => profile.id === featuredProfileId) || leaders[0];
-  if (featuredProfile) renderFeatured(featuredProfile);
   renderRows();
 }
 
@@ -277,17 +195,8 @@ function profileId(name) {
   return name.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
-rows.addEventListener("click", (event) => {
-  const featureButton = event.target.closest("[data-feature]");
-  if (!featureButton) return;
-
-  const profile = profiles.find((item) => item.id === featureButton.dataset.feature);
-  if (profile) renderFeatured(profile);
-});
-
 resetButton.addEventListener("click", () => {
   profiles = sourceProfiles.profiles;
-  featuredProfileId = null;
   render();
 });
 
@@ -299,25 +208,33 @@ sortButtons.forEach((button) => {
   });
 });
 
-copyButton.addEventListener("click", async () => {
-  const command = joinCommand.textContent.trim();
+document.querySelectorAll("[data-copy-target]").forEach((button) => {
+  button.addEventListener("click", () => copyCommand(button));
+});
+
+copyButton.addEventListener("click", () => copyCommand(copyButton));
+
+async function copyCommand(button) {
+  const targetSelector = button.dataset.copyTarget;
+  const target = targetSelector ? document.querySelector(targetSelector) : joinCommand;
+  const command = target.textContent.trim();
 
   try {
     await navigator.clipboard.writeText(command);
-    copyButton.textContent = "Copied";
+    button.textContent = "Copied";
   } catch {
     const range = document.createRange();
     const selection = window.getSelection();
-    range.selectNodeContents(joinCommand);
+    range.selectNodeContents(target);
     selection.removeAllRanges();
     selection.addRange(range);
-    copyButton.textContent = "Selected";
+    button.textContent = "Selected";
   }
 
   window.setTimeout(() => {
-    copyButton.textContent = "Copy";
+    button.textContent = "Copy";
   }, 1600);
-});
+}
 
 loadProfiles().then((loadedProfiles) => {
   profiles = loadedProfiles;

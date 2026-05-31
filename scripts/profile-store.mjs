@@ -46,6 +46,8 @@ export function normalizeProfile(profile) {
     id,
     name: String(profile.name).trim(),
     handle: normalizeHandle(profile.handle || id),
+    location: String(profile.location || "").trim(),
+    flag: String(profile.flag || "").trim(),
     lifetimeTokens: Number(profile.lifetimeTokens),
     peakTokens: Number(profile.peakTokens),
     longestTaskMinutes: Number(profile.longestTaskMinutes),
@@ -55,39 +57,16 @@ export function normalizeProfile(profile) {
   };
 }
 
-export function scoreFor(profile) {
-  const lifetimeScore = profile.lifetimeTokens / 10000000;
-  const peakScore = profile.peakTokens / 5000000;
-  const taskScore = profile.longestTaskMinutes * 0.65;
-  const streakScore = profile.currentStreak * 18 + profile.longestStreak * 10;
-  return Math.round(lifetimeScore + peakScore + taskScore + streakScore);
-}
-
 export function upsertProfile(database, profile, updatedAt = new Date().toISOString()) {
   const normalizedProfile = normalizeProfile(profile);
   const existingProfiles = Array.isArray(database.profiles) ? database.profiles.map(normalizeProfile) : [];
   const profiles = existingProfiles.filter((item) => item.id !== normalizedProfile.id);
   profiles.push(normalizedProfile);
-  profiles.sort((a, b) => scoreFor(b) - scoreFor(a) || a.name.localeCompare(b.name));
+  profiles.sort((a, b) => b.lifetimeTokens - a.lifetimeTokens || a.name.localeCompare(b.name));
 
   return {
     version: 1,
     updatedAt,
     profiles
-  };
-}
-
-export function buildSupabaseRow(profile) {
-  const normalizedProfile = normalizeProfile(profile);
-  return {
-    id: normalizedProfile.id,
-    name: normalizedProfile.name,
-    handle: normalizedProfile.handle,
-    lifetime_tokens: normalizedProfile.lifetimeTokens,
-    peak_tokens: normalizedProfile.peakTokens,
-    longest_task_minutes: normalizedProfile.longestTaskMinutes,
-    current_streak: normalizedProfile.currentStreak,
-    longest_streak: normalizedProfile.longestStreak,
-    activity_seed: normalizedProfile.activitySeed
   };
 }

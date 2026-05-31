@@ -63,7 +63,6 @@ let sourceProfiles = {
 let sortKey = "lifetimeTokens";
 
 const rows = document.querySelector("#leaderboardRows");
-const resetButton = document.querySelector("#resetBoard");
 const copyButton = document.querySelector("#copyCommand");
 const joinCommand = document.querySelector("#joinCommand");
 const sortButtons = [...document.querySelectorAll(".sort-button")];
@@ -194,11 +193,6 @@ function render() {
 function profileId(name) {
   return name.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
-
-resetButton.addEventListener("click", () => {
-  profiles = sourceProfiles.profiles;
-  render();
-});
 
 sortButtons.forEach((button) => {
   button.addEventListener("click", () => {

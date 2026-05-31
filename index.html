@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tokenmaxx Board</title>
-    <link rel="stylesheet" href="./styles.css?v=screenshot-flow">
+    <link rel="stylesheet" href="./styles.css?v=ship-pass">
   </head>
   <body>
     <main class="page-shell">
       <header class="site-header">
         <a class="brand" href="#top" aria-label="Tokenmaxx Board home">Tokenmaxx Board</a>
         <nav class="top-links" aria-label="Primary links">
+          <a href="#howItWorks"><span class="label-full">Participate</span><span class="label-short">Join</span></a>
           <a href="#leaderboard"><span class="label-full">Leaderboard</span><span class="label-short">Board</span></a>
           <a href="https://github.com/globodex"><span class="label-full">Globodex</span><span class="label-short">GitHub</span></a>
         </nav>
@@ -22,43 +23,57 @@
           <p class="hero-lede">
             Ranked by visible Codex profile stats.
           </p>
-          <a class="hero-jump" href="#leaderboard">View rankings</a>
-        </div>
-
-        <div class="sync-panel" aria-label="Codex profile sync flows">
-          <h2>Upload a screenshot, then run one command.</h2>
-          <div class="flow-list">
-            <article class="flow-card">
-              <span>First-time</span>
-              <h3>Attach your Codex profile screenshot in Codex.</h3>
-              <div class="setup-helper" aria-label="Optional profile location helper">
-                <label>
-                  <span>Location optional</span>
-                  <input id="locationInput" type="text" autocomplete="address-level2" placeholder="City or region">
-                </label>
-                <label>
-                  <span>Country optional</span>
-                  <input id="countryInput" type="text" list="countryOptions" autocomplete="country-name" placeholder="Search country">
-                  <datalist id="countryOptions"></datalist>
-                </label>
-                <small id="countryHint">Type a country name or two-letter code; the flag is added automatically.</small>
-              </div>
-              <div class="inline-command">
-                <code id="setupCommand">/update-stats setup</code>
-                <button class="copy-button" type="button" data-copy-target="#setupCommand">Copy</button>
-              </div>
-            </article>
-
-            <article class="flow-card primary-flow">
-              <span>Returning</span>
-              <h3>Attach the latest screenshot, then refresh.</h3>
-              <div class="inline-command">
-                <code id="joinCommand">/update-stats</code>
-                <button class="copy-button" id="copyCommand" type="button">Copy</button>
-              </div>
-            </article>
+          <div class="hero-actions">
+            <a class="hero-jump" href="#howItWorks">How to join</a>
+            <a class="hero-link" href="#leaderboard">View rankings</a>
           </div>
         </div>
+      </section>
+
+      <section class="participation-section" id="howItWorks" aria-label="How to participate">
+        <div class="participation-heading">
+          <div>
+            <p class="eyebrow">Participate</p>
+            <h2>Screenshot. Command. Done.</h2>
+          </div>
+          <a href="https://github.com/globodex">Join Globodex</a>
+        </div>
+
+        <div class="command-grid" aria-label="Codex profile sync commands">
+          <article class="command-card">
+            <span>First-time</span>
+            <p>Attach screenshot first.</p>
+            <div class="inline-command">
+              <code id="setupCommand">/update-stats setup</code>
+              <button class="copy-button" type="button" data-copy-target="#setupCommand">Copy</button>
+            </div>
+          </article>
+
+          <article class="command-card">
+            <span>Returning</span>
+            <p>Attach latest screenshot.</p>
+            <div class="inline-command">
+              <code id="joinCommand">/update-stats</code>
+              <button class="copy-button" id="copyCommand" type="button">Copy</button>
+            </div>
+          </article>
+        </div>
+
+        <details class="location-details">
+          <summary>Add optional location or flag</summary>
+          <div class="setup-helper" aria-label="Optional profile location helper">
+            <label>
+              <span>Location</span>
+              <input id="locationInput" type="text" autocomplete="address-level2" placeholder="City or region">
+            </label>
+            <label>
+              <span>Country</span>
+              <input id="countryInput" type="text" list="countryOptions" autocomplete="country-name" placeholder="Search country">
+              <datalist id="countryOptions"></datalist>
+            </label>
+            <small id="countryHint">Type a country name or two-letter code; the flag is added automatically.</small>
+          </div>
+        </details>
       </section>
 
       <section class="content-grid">
@@ -94,11 +109,6 @@
           </div>
         </section>
 
-        <section class="participation-card" aria-label="Participation command details">
-          <h2>Profile management</h2>
-          <p id="howItWorks">First-time ambassadors use `/update-stats setup` to create a row with optional location metadata. Returning ambassadors use `/update-stats` to refresh only the five visible stats. Codex syncs the shared JSON file in the Globodex repo through GitHub.</p>
-          <code>npm run sync:profile -- --name "Ada Launch" --handle "@ada.launch" --location "San Francisco" --country "United States" --lifetime 12.4B --peak 1.3B --task "17h 42m" --current 42 --longest 58</code>
-        </section>
       </section>
 
       <footer>
@@ -106,6 +116,6 @@
       </footer>
     </main>
 
-    <script src="./app.js?v=screenshot-flow" type="module"></script>
+    <script src="./app.js?v=ship-pass" type="module"></script>
   </body>
 </html>

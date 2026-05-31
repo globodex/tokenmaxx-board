@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tokenmaxx Board</title>
-    <link rel="stylesheet" href="./styles.css?v=ship-pass">
+    <link rel="stylesheet" href="./styles.css?v=ranked-list">
   </head>
   <body>
     <main class="page-shell">
@@ -23,6 +23,11 @@
           <p class="hero-lede">
             Ranked by visible Codex profile stats.
           </p>
+          <div class="hero-facts" aria-label="Leaderboard principles">
+            <span>Global community</span>
+            <span>Visible stats</span>
+            <span>Opt-in only</span>
+          </div>
         </div>
       </section>
 
@@ -30,7 +35,7 @@
         <div class="participation-heading">
           <div>
             <p class="eyebrow">Participate</p>
-            <h2>Screenshot. Command. Done.</h2>
+            <h2>Screenshot. Command. Ranked.</h2>
           </div>
           <a href="https://github.com/globodex">Join Globodex</a>
         </div>
@@ -78,6 +83,7 @@
             <div>
               <p class="eyebrow">Leaderboard</p>
               <h2>Rankings</h2>
+              <p class="section-note" id="updatedLabel">Updated from Globodex data.</p>
             </div>
             <div class="sort-control" role="group" aria-label="Sort leaderboard">
               <button class="sort-button active" type="button" data-sort="lifetimeTokens">Lifetime</button>
@@ -112,6 +118,6 @@
       </footer>
     </main>
 
-    <script src="./app.js?v=ship-pass" type="module"></script>
+    <script src="./app.js?v=ranked-list" type="module"></script>
   </body>
 </html>

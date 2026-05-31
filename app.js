@@ -85,6 +85,7 @@ const countryInput = document.querySelector("#countryInput");
 const countryOptions = document.querySelector("#countryOptions");
 const countryHint = document.querySelector("#countryHint");
 const sortButtons = [...document.querySelectorAll(".sort-button")];
+const updatedLabel = document.querySelector("#updatedLabel");
 
 async function loadProfiles() {
   sourceProfiles = await loadSourceProfiles();
@@ -161,6 +162,18 @@ function formatTask(minutes) {
   return remainder ? `${hours}h ${remainder}m` : `${hours}h`;
 }
 
+function formatUpdatedAt(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime()) || date.getFullYear() < 2000) return "Updated from Globodex data.";
+
+  return `Updated ${new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit"
+  }).format(date)}.`;
+}
+
 function seedFromText(text) {
   return [...text].reduce((sum, char) => sum + char.charCodeAt(0), 0);
 }
@@ -198,17 +211,18 @@ function renderRows() {
           </span>
         </div>
       </td>
-      <td data-label="Lifetime">${formatCompact(profile.lifetimeTokens)}</td>
-      <td data-label="Peak">${formatCompact(profile.peakTokens)}</td>
-      <td data-label="Task">${formatTask(profile.longestTaskMinutes)}</td>
-      <td data-label="Current">${profile.currentStreak} days</td>
-      <td data-label="Longest">${profile.longestStreak} days</td>
+      <td data-label="Lifetime"><span class="metric metric-lifetime"><strong>${formatCompact(profile.lifetimeTokens)}</strong><span>Lifetime</span></span></td>
+      <td data-label="Peak"><span class="metric"><strong>${formatCompact(profile.peakTokens)}</strong><span>Peak</span></span></td>
+      <td data-label="Task"><span class="metric"><strong>${formatTask(profile.longestTaskMinutes)}</strong><span>Task</span></span></td>
+      <td data-label="Current"><span class="metric"><strong>${profile.currentStreak} days</strong><span>Current</span></span></td>
+      <td data-label="Longest"><span class="metric"><strong>${profile.longestStreak} days</strong><span>Longest</span></span></td>
     `;
     rows.append(row);
   });
 }
 
 function render() {
+  if (updatedLabel) updatedLabel.textContent = formatUpdatedAt(sourceProfiles.updatedAt);
   renderRows();
 }
 

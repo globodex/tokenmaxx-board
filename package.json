@@ -5,6 +5,7 @@
   "description": "Unofficial Codex ambassador scoreboard for tokens, streaks, and long-running tasks.",
   "scripts": {
     "start": "python3 -m http.server 5173",
-    "check": "node --check app.js"
+    "check": "node --check app.js && node --check scripts/profile-store.mjs && node --check scripts/update-profile.mjs && node --test test/*.test.mjs",
+    "update:profile": "node scripts/update-profile.mjs"
   }
 }

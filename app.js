@@ -1,7 +1,8 @@
-const STORAGE_KEY = "tokenmaxx-board-profiles";
+const DATA_URL = "./data/profiles.json";
 const DAYS_IN_HEATMAP = 315;
+const config = window.TOKENMAXX_CONFIG || {};
 
-const seedProfiles = [
+const fallbackProfiles = [
   {
     id: "ada-launch",
     name: "Ada Launch",
@@ -48,13 +49,19 @@ const seedProfiles = [
   }
 ];
 
-let profiles = loadProfiles();
+let profiles = fallbackProfiles;
+let sourceProfiles = {
+  updatedAt: "1970-01-01T00:00:00.000Z",
+  profiles: fallbackProfiles
+};
 let sortKey = "score";
 let activityMode = "daily";
+let featuredProfileId = null;
 
-const form = document.querySelector("#profileForm");
 const rows = document.querySelector("#leaderboardRows");
 const resetButton = document.querySelector("#resetBoard");
+const copyButton = document.querySelector("#copyCommand");
+const joinCommand = document.querySelector("#joinCommand");
 const sortButtons = [...document.querySelectorAll(".sort-button")];
 const modeButtons = [...document.querySelectorAll(".mode-tabs button")];
 const featuredAvatar = document.querySelector("#featuredAvatar");
@@ -67,19 +74,72 @@ const featuredCurrentStreak = document.querySelector("#featuredCurrentStreak");
 const featuredLongestStreak = document.querySelector("#featuredLongestStreak");
 const featuredHeatmap = document.querySelector("#featuredHeatmap");
 
-function loadProfiles() {
-  const saved = window.localStorage.getItem(STORAGE_KEY);
-  if (!saved) return seedProfiles;
+async function loadProfiles() {
+  sourceProfiles = await loadSourceProfiles();
+  return sourceProfiles.profiles;
+}
+
+async function loadSourceProfiles() {
+  const persistentProfiles = await loadSupabaseProfiles();
+  if (persistentProfiles) return persistentProfiles;
 
   try {
-    const parsed = JSON.parse(saved);
-    if (Array.isArray(parsed) && parsed.some((profile) => !("lifetimeTokens" in profile))) {
-      return seedProfiles;
-    }
-    return Array.isArray(parsed) && parsed.length > 0 ? parsed.map(normalizeProfile) : seedProfiles;
+    const response = await fetch(DATA_URL, { cache: "no-store" });
+    if (!response.ok) throw new Error(`Unable to load ${DATA_URL}`);
+    const parsed = await response.json();
+
+    return {
+      updatedAt: parsed.updatedAt || "1970-01-01T00:00:00.000Z",
+      profiles: Array.isArray(parsed.profiles) && parsed.profiles.length > 0
+        ? parsed.profiles.map(normalizeProfile)
+        : fallbackProfiles
+    };
   } catch {
-    return seedProfiles;
+    return {
+      updatedAt: "1970-01-01T00:00:00.000Z",
+      profiles: fallbackProfiles
+    };
   }
+}
+
+async function loadSupabaseProfiles() {
+  if (!config.supabaseUrl || !config.supabaseAnonKey) return null;
+
+  const url = `${config.supabaseUrl.replace(/\/$/, "")}/rest/v1/profiles?select=*&order=lifetime_tokens.desc`;
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        apikey: config.supabaseAnonKey,
+        authorization: `Bearer ${config.supabaseAnonKey}`
+      }
+    });
+
+    if (!response.ok) throw new Error("Unable to load persistent profiles");
+    const rows = await response.json();
+    if (!Array.isArray(rows) || rows.length === 0) return null;
+
+    return {
+      updatedAt: rows.reduce((latest, row) => row.updated_at > latest ? row.updated_at : latest, "1970-01-01T00:00:00.000Z"),
+      profiles: rows.map(profileFromSupabase)
+    };
+  } catch {
+    return null;
+  }
+}
+
+function profileFromSupabase(row) {
+  return normalizeProfile({
+    id: row.id,
+    name: row.name,
+    handle: row.handle,
+    lifetimeTokens: row.lifetime_tokens,
+    peakTokens: row.peak_tokens,
+    longestTaskMinutes: row.longest_task_minutes,
+    currentStreak: row.current_streak,
+    longestStreak: row.longest_streak,
+    activitySeed: row.activity_seed
+  });
 }
 
 function normalizeProfile(profile) {
@@ -99,10 +159,6 @@ function normalizeProfile(profile) {
     longestStreak: Number(profile.longestStreak ?? profile.streak ?? 0),
     activitySeed: Number(profile.activitySeed ?? seedFromText(id))
   };
-}
-
-function saveProfiles() {
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(profiles));
 }
 
 function escapeHtml(value) {
@@ -180,12 +236,15 @@ function activityLevelBase(profile, index) {
 }
 
 function renderFeatured(profile) {
-  featuredAvatar.textContent = profile.name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
+  featuredProfileId = profile.id;
+  if (featuredAvatar) {
+    featuredAvatar.textContent = profile.name
+      .split(" ")
+      .map((part) => part[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase();
+  }
   featuredName.textContent = profile.name;
   featuredHandle.textContent = profile.handle;
   featuredLifetime.textContent = formatCompact(profile.lifetimeTokens);
@@ -213,6 +272,7 @@ function renderRows() {
 
   sortedProfiles().forEach((profile, index) => {
     const row = document.createElement("tr");
+    row.className = "leaderboard-row";
     row.innerHTML = `
       <td><span class="rank">${index + 1}</span></td>
       <td>
@@ -230,9 +290,6 @@ function renderRows() {
       <td>${profile.currentStreak} days</td>
       <td>${profile.longestStreak} days</td>
       <td class="score">${new Intl.NumberFormat("en-US").format(scoreFor(profile))}</td>
-      <td>
-        <button class="delete-button" type="button" aria-label="Remove ${escapeHtml(profile.name)}" data-remove="${escapeHtml(profile.id)}">×</button>
-      </td>
     `;
     rows.append(row);
   });
@@ -249,7 +306,8 @@ function initialsFor(name) {
 
 function render() {
   const leaders = sortedProfiles();
-  renderFeatured(leaders[0]);
+  const featuredProfile = profiles.find((profile) => profile.id === featuredProfileId) || leaders[0];
+  if (featuredProfile) renderFeatured(featuredProfile);
   renderRows();
 }
 
@@ -257,39 +315,7 @@ function profileId(name) {
   return name.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const data = new FormData(form);
-  const name = String(data.get("name")).trim();
-  const id = profileId(name);
-  const longestTaskHours = Number(data.get("longestTaskHours"));
-  const nextProfile = {
-    id,
-    name,
-    handle: String(data.get("handle")).trim(),
-    lifetimeTokens: Number(data.get("lifetimeTokens")),
-    peakTokens: Number(data.get("peakTokens")),
-    longestTaskMinutes: Math.round(longestTaskHours * 60),
-    currentStreak: Number(data.get("currentStreak")),
-    longestStreak: Number(data.get("longestStreak")),
-    activitySeed: seedFromText(id)
-  };
-
-  profiles = profiles.filter((profile) => profile.id !== id).concat(nextProfile);
-  saveProfiles();
-  form.reset();
-  render();
-});
-
 rows.addEventListener("click", (event) => {
-  const removeButton = event.target.closest("[data-remove]");
-  if (removeButton) {
-    profiles = profiles.filter((profile) => profile.id !== removeButton.dataset.remove);
-    saveProfiles();
-    render();
-    return;
-  }
-
   const featureButton = event.target.closest("[data-feature]");
   if (!featureButton) return;
 
@@ -298,8 +324,8 @@ rows.addEventListener("click", (event) => {
 });
 
 resetButton.addEventListener("click", () => {
-  profiles = seedProfiles;
-  saveProfiles();
+  profiles = sourceProfiles.profiles;
+  featuredProfileId = null;
   render();
 });
 
@@ -315,8 +341,27 @@ modeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     activityMode = button.dataset.mode;
     modeButtons.forEach((item) => item.classList.toggle("active", item === button));
-    renderHeatmap(sortedProfiles()[0]);
+    const featuredProfile = profiles.find((profile) => profile.id === featuredProfileId) || sortedProfiles()[0];
+    if (featuredProfile) renderHeatmap(featuredProfile);
   });
 });
 
-render();
+copyButton.addEventListener("click", async () => {
+  const command = joinCommand.textContent.trim();
+
+  try {
+    await navigator.clipboard.writeText(command);
+    copyButton.textContent = "Copied";
+  } catch {
+    copyButton.textContent = "Select";
+  }
+
+  window.setTimeout(() => {
+    copyButton.textContent = "Copy";
+  }, 1600);
+});
+
+loadProfiles().then((loadedProfiles) => {
+  profiles = loadedProfiles;
+  render();
+});

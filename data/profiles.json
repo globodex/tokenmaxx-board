@@ -1,7 +1,22 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-31T03:51:11.843Z",
+  "updatedAt": "2026-05-31T15:33:21.494Z",
   "profiles": [
+    {
+      "id": "adrianmelic",
+      "name": "adrianmelic",
+      "handle": "@adrianmelic",
+      "location": "Canarias",
+      "country": "Spain",
+      "countryCode": "ES",
+      "flag": "🇪🇸",
+      "lifetimeTokens": 31200000000,
+      "peakTokens": 2500000000,
+      "longestTaskMinutes": 745,
+      "currentStreak": 85,
+      "longestStreak": 85,
+      "activitySeed": 1145
+    },
     {
       "id": "michael-wall",
       "name": "Michael Wall",

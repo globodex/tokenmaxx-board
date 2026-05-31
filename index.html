@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tokenmaxx Board</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="app-frame">
+      <nav class="side-rail" aria-label="Board navigation">
+        <div class="rail-mark" aria-hidden="true">&gt;_</div>
+        <a class="rail-link active" href="#leaderboardRows">Board</a>
+        <a class="rail-link" href="#profileForm">Log</a>
+        <a class="rail-link" href="./README.md">Docs</a>
+        <p>Built for community play</p>
+      </nav>
+
+      <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Unofficial Codex Ambassador League</p>
+          <h1>Tokenmaxx Board</h1>
+        </div>
+        <div class="top-actions">
+          <span class="live-chip"><span aria-hidden="true"></span>Live local board</span>
+          <button class="icon-button" id="resetBoard" type="button" aria-label="Reset demo board" title="Reset demo board">
+            <span aria-hidden="true">↺</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="score-strip" aria-label="League totals">
+        <article>
+          <span id="totalTokens">0</span>
+          <p>Tokens used</p>
+        </article>
+        <article>
+          <span id="bestStreak">0</span>
+          <p>Best streak</p>
+        </article>
+        <article>
+          <span id="longestTask">0h</span>
+          <p>Longest task</p>
+        </article>
+        <article>
+          <span id="activeBuilders">0</span>
+          <p>Active profiles</p>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <aside class="entry-panel" aria-label="Add or update ambassador">
+          <h2>Log a profile</h2>
+          <form id="profileForm">
+            <label>
+              Name
+              <input id="name" name="name" autocomplete="name" required placeholder="Ada">
+            </label>
+            <label>
+              Tokens used
+              <input id="tokens" name="tokens" type="number" min="0" step="1000" required placeholder="420000">
+            </label>
+            <label>
+              Current streak
+              <input id="streak" name="streak" type="number" min="0" step="1" required placeholder="9">
+            </label>
+            <label>
+              Longest task hours
+              <input id="longest" name="longest" type="number" min="0" step="0.5" required placeholder="14.5">
+            </label>
+            <label>
+              Focus
+              <select id="focus" name="focus">
+                <option>Workshops</option>
+                <option>Demos</option>
+                <option>Open source</option>
+                <option>Support</option>
+                <option>Research</option>
+              </select>
+            </label>
+            <button class="primary-button" type="submit">Save profile</button>
+          </form>
+        </aside>
+
+        <section class="board-section" aria-label="Scoreboard">
+          <div class="section-heading">
+            <h2>Ambassador standings</h2>
+            <div class="sort-control" role="group" aria-label="Sort leaderboard">
+              <button class="sort-button active" type="button" data-sort="score">Score</button>
+              <button class="sort-button" type="button" data-sort="tokens">Tokens</button>
+              <button class="sort-button" type="button" data-sort="streak">Streak</button>
+              <button class="sort-button" type="button" data-sort="longest">Task</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Rank</th>
+                  <th scope="col">Ambassador</th>
+                  <th scope="col">Tokens</th>
+                  <th scope="col">Streak</th>
+                  <th scope="col">Longest task</th>
+                  <th scope="col">Focus</th>
+                  <th scope="col">Score</th>
+                  <th scope="col"><span class="sr-only">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody id="leaderboardRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+      </main>
+    </div>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "tokenmaxx-board",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Unofficial Codex ambassador scoreboard for tokens, streaks, and long-running tasks.",
+  "scripts": {
+    "start": "python3 -m http.server 5173",
+    "check": "node --check app.js"
+  }
+}

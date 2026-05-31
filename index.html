@@ -7,102 +7,103 @@
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <div class="app-frame">
-      <nav class="side-rail" aria-label="Board navigation">
-        <div class="rail-mark" aria-hidden="true">&gt;_</div>
-        <a class="rail-link active" href="#leaderboardRows">Board</a>
-        <a class="rail-link" href="#profileForm">Log</a>
-        <a class="rail-link" href="./README.md">Docs</a>
-        <p>Built for community play</p>
-      </nav>
-
-      <main class="app-shell">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">Unofficial Codex Ambassador League</p>
-          <h1>Tokenmaxx Board</h1>
-        </div>
-        <div class="top-actions">
-          <span class="live-chip"><span aria-hidden="true"></span>Live local board</span>
-          <button class="icon-button" id="resetBoard" type="button" aria-label="Reset demo board" title="Reset demo board">
-            <span aria-hidden="true">↺</span>
-          </button>
-        </div>
+    <main class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Tokenmaxx Board home">Tokenmaxx Board</a>
+        <nav aria-label="Page sections">
+          <a class="active" href="#top">Board</a>
+          <a href="#leaderboard">Leaderboard</a>
+          <a href="#profileForm">Add profile</a>
+        </nav>
+        <button class="reset-button" id="resetBoard" type="button" aria-label="Reset demo board" title="Reset demo board">
+          Reset
+        </button>
       </header>
 
-      <section class="score-strip" aria-label="League totals">
-        <article>
-          <span id="totalTokens">0</span>
-          <p>Tokens used</p>
-        </article>
-        <article>
-          <span id="bestStreak">0</span>
-          <p>Best streak</p>
-        </article>
-        <article>
-          <span id="longestTask">0h</span>
-          <p>Longest task</p>
-        </article>
-        <article>
-          <span id="activeBuilders">0</span>
-          <p>Active profiles</p>
-        </article>
+      <section class="hero" id="top" aria-label="Featured ambassador">
+        <div class="avatar" id="featuredAvatar" aria-hidden="true">TB</div>
+        <p class="eyebrow">Unofficial Codex ambassador league</p>
+        <h1 id="featuredName">Tokenmaxx Board</h1>
+        <p class="handle" id="featuredHandle">@tokenmaxx</p>
+
+        <div class="stat-capsule" aria-label="Featured profile stats">
+          <article>
+            <strong id="featuredLifetime">0</strong>
+            <span>Lifetime tokens</span>
+          </article>
+          <article>
+            <strong id="featuredPeak">0</strong>
+            <span>Peak tokens</span>
+          </article>
+          <article>
+            <strong id="featuredTask">0h</strong>
+            <span>Longest task</span>
+          </article>
+          <article>
+            <strong id="featuredCurrentStreak">0 days</strong>
+            <span>Current streak</span>
+          </article>
+          <article>
+            <strong id="featuredLongestStreak">0 days</strong>
+            <span>Longest streak</span>
+          </article>
+        </div>
       </section>
 
-      <section class="workspace">
-        <aside class="entry-panel" aria-label="Add or update ambassador">
-          <h2>Log a profile</h2>
-          <form id="profileForm">
-            <label>
-              Name
-              <input id="name" name="name" autocomplete="name" required placeholder="Ada">
-            </label>
-            <label>
-              Tokens used
-              <input id="tokens" name="tokens" type="number" min="0" step="1000" required placeholder="420000">
-            </label>
-            <label>
-              Current streak
-              <input id="streak" name="streak" type="number" min="0" step="1" required placeholder="9">
-            </label>
-            <label>
-              Longest task hours
-              <input id="longest" name="longest" type="number" min="0" step="0.5" required placeholder="14.5">
-            </label>
-            <label>
-              Focus
-              <select id="focus" name="focus">
-                <option>Workshops</option>
-                <option>Demos</option>
-                <option>Open source</option>
-                <option>Support</option>
-                <option>Research</option>
-              </select>
-            </label>
-            <button class="primary-button" type="submit">Save profile</button>
-          </form>
-        </aside>
+      <section class="activity-section" aria-label="Token activity">
+        <div class="section-heading">
+          <h2>Token activity</h2>
+          <div class="mode-tabs" aria-label="Activity mode">
+            <button class="active" type="button" data-mode="daily">Daily</button>
+            <button type="button" data-mode="weekly">Weekly</button>
+            <button type="button" data-mode="cumulative">Cumulative</button>
+          </div>
+        </div>
+        <div class="heatmap-wrap">
+          <div class="heatmap" id="featuredHeatmap" aria-label="Daily token activity heatmap"></div>
+          <div class="month-labels" aria-hidden="true">
+            <span>Jul</span>
+            <span>Aug</span>
+            <span>Sep</span>
+            <span>Oct</span>
+            <span>Nov</span>
+            <span>Dec</span>
+            <span>Jan</span>
+            <span>Feb</span>
+            <span>Mar</span>
+            <span>Apr</span>
+            <span>May</span>
+          </div>
+        </div>
+        <div class="heatmap-key" aria-hidden="true">
+          <span>Less</span>
+          <i></i><i></i><i></i><i></i><i></i><i></i>
+          <span>More</span>
+        </div>
+      </section>
 
-        <section class="board-section" aria-label="Scoreboard">
+      <section class="content-grid">
+        <section class="board-section" id="leaderboard" aria-label="Ambassador leaderboard">
           <div class="section-heading">
-            <h2>Ambassador standings</h2>
+            <h2>Ambassador leaderboard</h2>
             <div class="sort-control" role="group" aria-label="Sort leaderboard">
               <button class="sort-button active" type="button" data-sort="score">Score</button>
-              <button class="sort-button" type="button" data-sort="tokens">Tokens</button>
-              <button class="sort-button" type="button" data-sort="streak">Streak</button>
-              <button class="sort-button" type="button" data-sort="longest">Task</button>
+              <button class="sort-button" type="button" data-sort="lifetimeTokens">Lifetime</button>
+              <button class="sort-button" type="button" data-sort="peakTokens">Peak</button>
+              <button class="sort-button" type="button" data-sort="currentStreak">Streak</button>
             </div>
           </div>
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
-                  <th scope="col">Rank</th>
+                  <th scope="col">#</th>
                   <th scope="col">Ambassador</th>
-                  <th scope="col">Tokens</th>
-                  <th scope="col">Streak</th>
+                  <th scope="col">Lifetime tokens</th>
+                  <th scope="col">Peak tokens</th>
                   <th scope="col">Longest task</th>
-                  <th scope="col">Focus</th>
+                  <th scope="col">Current streak</th>
+                  <th scope="col">Longest streak</th>
                   <th scope="col">Score</th>
                   <th scope="col"><span class="sr-only">Actions</span></th>
                 </tr>
@@ -111,9 +112,47 @@
             </table>
           </div>
         </section>
+
+        <aside class="entry-panel" aria-label="Add or update ambassador">
+          <h2>Add profile</h2>
+          <form id="profileForm">
+            <label>
+              Name
+              <input id="name" name="name" autocomplete="name" required placeholder="Ada Launch">
+            </label>
+            <label>
+              Handle
+              <input id="handle" name="handle" autocomplete="username" required placeholder="@ada.launch">
+            </label>
+            <label>
+              Lifetime tokens
+              <input id="lifetimeTokens" name="lifetimeTokens" type="number" min="0" step="1000000" required placeholder="12400000000">
+            </label>
+            <label>
+              Peak tokens
+              <input id="peakTokens" name="peakTokens" type="number" min="0" step="100000" required placeholder="1300000000">
+            </label>
+            <label>
+              Longest task hours
+              <input id="longestTaskHours" name="longestTaskHours" type="number" min="0" step="0.1" required placeholder="17.7">
+            </label>
+            <label>
+              Current streak
+              <input id="currentStreak" name="currentStreak" type="number" min="0" step="1" required placeholder="42">
+            </label>
+            <label>
+              Longest streak
+              <input id="longestStreak" name="longestStreak" type="number" min="0" step="1" required placeholder="58">
+            </label>
+            <button class="primary-button" type="submit">Save profile</button>
+          </form>
+        </aside>
       </section>
-      </main>
-    </div>
+
+      <footer>
+        Tokenmaxx Board is unofficial. Stats are self-reported and stored locally in your browser.
+      </footer>
+    </main>
 
     <script src="./app.js" type="module"></script>
   </body>

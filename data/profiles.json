@@ -1,5 +1,51 @@
 {
   "version": 1,
-  "updatedAt": "1970-01-01T00:00:00.000Z",
-  "profiles": []
+  "updatedAt": "2026-05-31T03:51:11.843Z",
+  "profiles": [
+    {
+      "id": "michael-wall",
+      "name": "Michael Wall",
+      "handle": "@soundformovement",
+      "location": "Salt Lake City",
+      "country": "United States",
+      "countryCode": "US",
+      "flag": "🇺🇸",
+      "lifetimeTokens": 30800000000,
+      "peakTokens": 3800000000,
+      "longestTaskMinutes": 391,
+      "currentStreak": 26,
+      "longestStreak": 61,
+      "activitySeed": 1200
+    },
+    {
+      "id": "swhan0329",
+      "name": "swhan0329",
+      "handle": "@swhan0329",
+      "location": "",
+      "country": "",
+      "countryCode": "",
+      "flag": "",
+      "lifetimeTokens": 17200000000,
+      "peakTokens": 3400000000,
+      "longestTaskMinutes": 752,
+      "currentStreak": 54,
+      "longestStreak": 54,
+      "activitySeed": 751
+    },
+    {
+      "id": "daniel-green",
+      "name": "Daniel Green",
+      "handle": "@daniel.green",
+      "location": "Kansas City",
+      "country": "United States",
+      "countryCode": "US",
+      "flag": "🇺🇸",
+      "lifetimeTokens": 16000000000,
+      "peakTokens": 1700000000,
+      "longestTaskMinutes": 1090,
+      "currentStreak": 56,
+      "longestStreak": 65,
+      "activitySeed": 1195
+    }
+  ]
 }

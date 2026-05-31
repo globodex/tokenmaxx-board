@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-31T16:40:04.975Z",
+  "updatedAt": "2026-05-31T17:22:22.033Z",
   "profiles": [
     {
       "id": "piyalitt-ittichaiwong",
@@ -46,6 +46,21 @@
       "currentStreak": 85,
       "longestStreak": 85,
       "activitySeed": 1145
+    },
+    {
+      "id": "david-marquez",
+      "name": "David Marquez",
+      "handle": "@dayvough",
+      "location": "Manila",
+      "country": "Philippines",
+      "countryCode": "PH",
+      "flag": "🇵🇭",
+      "lifetimeTokens": 19100000000,
+      "peakTokens": 664900000,
+      "longestTaskMinutes": 1447,
+      "currentStreak": 150,
+      "longestStreak": 150,
+      "activitySeed": 1338
     },
     {
       "id": "swhan0329",

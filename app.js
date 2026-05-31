@@ -80,6 +80,7 @@ const rows = document.querySelector("#leaderboardRows");
 const copyButton = document.querySelector("#copyCommand");
 const joinCommand = document.querySelector("#joinCommand");
 const setupCommand = document.querySelector("#setupCommand");
+const setupCommandPreview = document.querySelector("#setupCommandPreview");
 const locationInput = document.querySelector("#locationInput");
 const countryInput = document.querySelector("#countryInput");
 const countryOptions = document.querySelector("#countryOptions");
@@ -250,7 +251,7 @@ function populateCountryOptions() {
 }
 
 function updateSetupCommand() {
-  if (!setupCommand) return;
+  if (!setupCommand && !setupCommandPreview) return;
 
   const parts = ["/update-stats setup"];
   const location = locationInput?.value.trim();
@@ -261,7 +262,9 @@ function updateSetupCommand() {
   if (country) parts.push("--country", quoteArg(country.name));
   else if (countryText) parts.push("--country", quoteArg(countryText));
 
-  setupCommand.textContent = parts.join(" ");
+  const command = parts.join(" ");
+  if (setupCommand) setupCommand.textContent = command;
+  if (setupCommandPreview) setupCommandPreview.textContent = command;
 
   if (countryHint) {
     countryHint.textContent = country

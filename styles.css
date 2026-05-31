@@ -272,26 +272,37 @@ h1 span {
 }
 
 .location-details {
+  display: grid;
+  gap: 12px;
   border-bottom: 1px solid var(--line);
   padding-bottom: 12px;
 }
 
-.location-details summary {
-  cursor: pointer;
-  color: var(--ink);
-  font-size: 0.9rem;
-  font-weight: 580;
+.location-summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-.location-details summary::marker {
+.location-summary span {
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 620;
+}
+
+.location-summary small {
   color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 680;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .setup-helper {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 10px;
-  margin-top: 12px;
 }
 
 .setup-helper label {
@@ -334,6 +345,20 @@ h1 span {
   line-height: 1.35;
 }
 
+.save-note {
+  grid-column: 1 / -1;
+  max-width: 720px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.save-note code {
+  color: var(--ink);
+  font-size: 0.94em;
+}
+
 .inline-command {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -364,6 +389,14 @@ h1 span {
   background: var(--ink);
   color: var(--panel);
   font-weight: 580;
+}
+
+.generated-command {
+  grid-column: 1 / -1;
+  border: 1px solid var(--soft);
+  border-radius: 8px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--panel) 76%, var(--bg));
 }
 
 .join-steps {

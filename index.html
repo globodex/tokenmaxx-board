@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tokenmaxx Board</title>
-    <link rel="stylesheet" href="./styles.css?v=ranked-list">
+    <link rel="stylesheet" href="./styles.css?v=setup-metadata">
   </head>
   <body>
     <main class="page-shell">
@@ -60,8 +60,11 @@
           </article>
         </div>
 
-        <details class="location-details">
-          <summary>Add optional location or flag</summary>
+        <div class="location-details" aria-label="Optional profile details">
+          <div class="location-summary">
+            <span>Optional location and flag</span>
+            <small>First-time setup only</small>
+          </div>
           <div class="setup-helper" aria-label="Optional profile location helper">
             <label>
               <span>Location</span>
@@ -73,8 +76,16 @@
               <datalist id="countryOptions"></datalist>
             </label>
             <small id="countryHint">Type a country name or two-letter code; the flag is added automatically.</small>
+            <p class="save-note">
+              These fields append saved metadata to the first-time command. Codex writes them to
+              <code>data/profiles.json</code> when it syncs your row.
+            </p>
+            <div class="inline-command generated-command">
+              <code id="setupCommandPreview">/update-stats setup</code>
+              <button class="copy-button" type="button" data-copy-target="#setupCommandPreview">Copy</button>
+            </div>
           </div>
-        </details>
+        </div>
       </section>
 
       <section class="content-grid">
@@ -118,6 +129,6 @@
       </footer>
     </main>
 
-    <script src="./app.js?v=ranked-list" type="module"></script>
+    <script src="./app.js?v=setup-metadata" type="module"></script>
   </body>
 </html>

@@ -4,43 +4,40 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tokenmaxx Board</title>
-    <link rel="stylesheet" href="./styles.css?v=global-flags">
+    <link rel="stylesheet" href="./styles.css?v=screenshot-flow">
   </head>
   <body>
     <main class="page-shell">
       <header class="site-header">
         <a class="brand" href="#top" aria-label="Tokenmaxx Board home">Tokenmaxx Board</a>
-        <nav aria-label="Page sections">
-          <a class="active" href="#top">Setup</a>
-          <a href="#leaderboard">Leaderboard</a>
-          <a href="#howItWorks">Sync</a>
+        <nav class="top-links" aria-label="Primary links">
+          <a href="#leaderboard"><span class="label-full">Leaderboard</span><span class="label-short">Board</span></a>
+          <a href="https://github.com/globodex"><span class="label-full">Globodex</span><span class="label-short">GitHub</span></a>
         </nav>
       </header>
 
       <section class="landing-hero" id="top" aria-label="Join Tokenmaxx Board">
         <div class="hero-copy">
-          <a class="eyebrow eyebrow-link" href="https://github.com/globodex">Globodex GitHub org</a>
-          <h1>Codex Ambassador Leaderboard</h1>
+          <h1><span>Codex Ambassador</span> <span>Leaderboard</span></h1>
           <p class="hero-lede">
-            Ranked by the Codex stats already visible on each ambassador profile.
+            Ranked by visible Codex profile stats.
           </p>
+          <a class="hero-jump" href="#leaderboard">View rankings</a>
         </div>
 
         <div class="sync-panel" aria-label="Codex profile sync flows">
-          <p class="panel-kicker">Participate</p>
-          <h2>Set up once. Sync after that.</h2>
+          <h2>Upload a screenshot, then run one command.</h2>
           <div class="flow-list">
             <article class="flow-card">
               <span>First-time</span>
-              <h3>Claim your row</h3>
-              <p>Upload a Codex profile screenshot and choose a searchable location. No emoji hunting.</p>
+              <h3>Attach your Codex profile screenshot in Codex.</h3>
               <div class="setup-helper" aria-label="Optional profile location helper">
                 <label>
-                  <span>Location</span>
+                  <span>Location optional</span>
                   <input id="locationInput" type="text" autocomplete="address-level2" placeholder="City or region">
                 </label>
                 <label>
-                  <span>Country</span>
+                  <span>Country optional</span>
                   <input id="countryInput" type="text" list="countryOptions" autocomplete="country-name" placeholder="Search country">
                   <datalist id="countryOptions"></datalist>
                 </label>
@@ -54,8 +51,7 @@
 
             <article class="flow-card primary-flow">
               <span>Returning</span>
-              <h3>Refresh stats</h3>
-              <p>Upload the latest profile screenshot and run the same command to update your numbers.</p>
+              <h3>Attach the latest screenshot, then refresh.</h3>
               <div class="inline-command">
                 <code id="joinCommand">/update-stats</code>
                 <button class="copy-button" id="copyCommand" type="button">Copy</button>
@@ -110,6 +106,6 @@
       </footer>
     </main>
 
-    <script src="./app.js?v=global-flags" type="module"></script>
+    <script src="./app.js?v=screenshot-flow" type="module"></script>
   </body>
 </html>

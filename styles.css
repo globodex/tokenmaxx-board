@@ -21,6 +21,17 @@
   --hero-gradient:
     linear-gradient(118deg, rgba(255, 252, 237, 0.98) 0%, rgba(218, 232, 246, 0.94) 34%, rgba(225, 218, 241, 0.78) 58%, rgba(202, 223, 210, 0.86) 100%),
     linear-gradient(180deg, rgba(255, 255, 251, 0.4), rgba(255, 255, 251, 0));
+  --control-bg: color-mix(in srgb, var(--panel) 82%, var(--bg));
+  --card-bg: var(--panel);
+  --input-bg: var(--panel);
+  --subtle-panel-bg: color-mix(in srgb, var(--panel) 76%, var(--bg));
+  --directory-card-bg: color-mix(in srgb, var(--panel) 86%, var(--bg));
+  --row-bg: color-mix(in srgb, var(--panel) 94%, var(--bg));
+  --row-hover-bg: var(--panel);
+  --empty-row-bg: color-mix(in srgb, var(--panel) 88%, var(--bg));
+  --metric-bg: color-mix(in srgb, var(--panel) 72%, var(--bg));
+  --metric-lifetime-bg: var(--panel);
+  --mobile-metric-bg: color-mix(in srgb, var(--panel) 86%, var(--bg));
   --top-row-bg: color-mix(in srgb, #fff8e4 72%, var(--panel));
   --blue-1: #eef4fb;
   --blue-2: #d9e8f8;
@@ -33,26 +44,37 @@
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0f100e;
-  --panel: #171816;
-  --ink: #f7f4eb;
-  --muted: #aaa69b;
-  --soft: #2a2b26;
-  --line: #393a33;
-  --wash: #1e1f1b;
-  --ink-soft: #d9d4c8;
-  --accent: #fffaf0;
-  --accent-soft: #24251f;
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
-  --header-bg: color-mix(in srgb, var(--panel) 88%, transparent);
-  --hero-base: #050607;
-  --hero-ink: #fffaf0;
-  --hero-muted: #d5cfc2;
-  --hero-grid: rgba(255, 250, 240, 0.08);
+  --bg: #10110e;
+  --panel: #191a16;
+  --ink: #f4f0e7;
+  --muted: #c4beb1;
+  --soft: #30332b;
+  --line: #44473d;
+  --wash: #24271f;
+  --ink-soft: #ded8cb;
+  --accent: #f7f2e8;
+  --accent-soft: #262a22;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+  --header-bg: rgba(22, 23, 20, 0.94);
+  --hero-base: #111615;
+  --hero-ink: #fff8eb;
+  --hero-muted: #e1daca;
+  --hero-grid: rgba(255, 248, 235, 0.075);
   --hero-gradient:
-    linear-gradient(116deg, rgba(19, 29, 36, 0.92) 0%, rgba(37, 49, 64, 0.9) 35%, rgba(61, 54, 72, 0.74) 60%, rgba(40, 56, 47, 0.86) 100%),
-    linear-gradient(180deg, rgba(255, 250, 240, 0.08), rgba(255, 250, 240, 0));
-  --top-row-bg: color-mix(in srgb, #3a321f 52%, var(--panel));
+    linear-gradient(116deg, rgba(25, 37, 44, 0.96) 0%, rgba(36, 42, 49, 0.94) 38%, rgba(36, 52, 43, 0.88) 72%, rgba(24, 27, 23, 0.98) 100%),
+    linear-gradient(180deg, rgba(255, 248, 235, 0.08), rgba(255, 248, 235, 0));
+  --control-bg: #20221d;
+  --card-bg: #171914;
+  --input-bg: #141611;
+  --subtle-panel-bg: #151711;
+  --directory-card-bg: #171914;
+  --row-bg: #181a15;
+  --row-hover-bg: #20221d;
+  --empty-row-bg: #171914;
+  --metric-bg: #11130f;
+  --metric-lifetime-bg: #1c1e18;
+  --mobile-metric-bg: #12140f;
+  --top-row-bg: #292515;
 }
 
 * {
@@ -142,7 +164,7 @@ button {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 4px 10px 4px 5px;
-  background: color-mix(in srgb, var(--panel) 82%, var(--bg));
+  background: var(--control-bg);
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 620;
@@ -264,7 +286,7 @@ html[data-theme="dark"] .hero-ambient::after {
 
 .eyebrow {
   margin: 0 0 10px;
-  color: #b9b5a9;
+  color: var(--muted);
   font-size: 0.78rem;
   font-weight: 720;
   letter-spacing: 0.13em;
@@ -345,7 +367,7 @@ h1 span {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--panel);
+  background: var(--card-bg);
   overflow: hidden;
 }
 
@@ -429,7 +451,7 @@ h1 span {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0 14px;
-  background: var(--panel);
+  background: var(--input-bg);
   color: var(--ink);
   outline: 0;
 }
@@ -500,7 +522,7 @@ h1 span {
   border: 1px solid var(--soft);
   border-radius: 8px;
   padding: 12px;
-  background: color-mix(in srgb, var(--panel) 76%, var(--bg));
+  background: var(--subtle-panel-bg);
 }
 
 .join-steps {
@@ -589,7 +611,7 @@ h2 {
   border: 1px solid var(--soft);
   border-radius: 999px;
   padding: 4px;
-  background: color-mix(in srgb, var(--panel) 76%, var(--bg));
+  background: var(--control-bg);
 }
 
 .sort-button {
@@ -643,7 +665,7 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0 14px;
-  background: var(--panel);
+  background: var(--control-bg);
   color: var(--ink);
   font-size: 0.86rem;
   font-weight: 580;
@@ -675,7 +697,7 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 0 14px;
-  background: var(--panel);
+  background: var(--input-bg);
   color: var(--ink);
   outline: 0;
 }
@@ -698,7 +720,7 @@ h2 {
   border: 1px solid var(--soft);
   border-radius: 9px;
   padding: 14px;
-  background: color-mix(in srgb, var(--panel) 86%, var(--bg));
+  background: var(--directory-card-bg);
 }
 
 .ambassador-card p {
@@ -829,7 +851,7 @@ thead th {
 tbody td {
   border-top: 1px solid var(--soft);
   border-bottom: 1px solid var(--soft);
-  background: color-mix(in srgb, var(--panel) 94%, var(--bg));
+  background: var(--row-bg);
 }
 
 tbody td:first-child {
@@ -849,14 +871,14 @@ tbody tr:first-child td {
 
 tbody tr:hover td {
   border-color: color-mix(in srgb, var(--ink) 24%, var(--soft));
-  background: var(--panel);
+  background: var(--row-hover-bg);
 }
 
 .empty-row td {
   border: 1px solid var(--soft);
   border-radius: 9px;
   padding: 28px;
-  background: color-mix(in srgb, var(--panel) 88%, var(--bg));
+  background: var(--empty-row-bg);
   text-align: center;
   white-space: normal;
 }
@@ -947,7 +969,7 @@ tbody tr:nth-child(3) .rank {
   border: 1px solid color-mix(in srgb, var(--line) 74%, transparent);
   border-radius: 999px;
   padding: 0 12px;
-  background: color-mix(in srgb, var(--panel) 72%, var(--bg));
+  background: var(--metric-bg);
 }
 
 .metric strong {
@@ -960,7 +982,7 @@ tbody tr:nth-child(3) .rank {
 
 .metric-lifetime {
   border-color: color-mix(in srgb, var(--ink) 18%, var(--line));
-  background: var(--panel);
+  background: var(--metric-lifetime-bg);
 }
 
 button:focus-visible {
@@ -1353,7 +1375,7 @@ button:focus-visible {
     border: 1px solid var(--soft);
     border-radius: 8px;
     padding: 14px;
-    background: var(--panel);
+    background: var(--row-bg);
   }
 
   #leaderboardRows .leaderboard-row:first-child {
@@ -1433,7 +1455,7 @@ button:focus-visible {
     border: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
     border-radius: 999px;
     padding: 4px 9px;
-    background: color-mix(in srgb, var(--panel) 86%, var(--bg));
+    background: var(--mobile-metric-bg);
   }
 
   .leaderboard-row .metric span {

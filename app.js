@@ -143,9 +143,12 @@ function formatUpdatedAt(value) {
   return `Updated ${new Intl.DateTimeFormat("en", {
     month: "short",
     day: "numeric",
-    hour: "numeric",
-    minute: "2-digit"
-  }).format(date)}.`;
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZone: "UTC"
+  }).format(date)} UTC.`;
 }
 
 function seedFromText(text) {

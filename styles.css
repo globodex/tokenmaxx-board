@@ -147,6 +147,17 @@ nav a.active {
   text-transform: uppercase;
 }
 
+.eyebrow-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.eyebrow-link:hover {
+  color: #fffaf0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 h1,
 h2,
 p {
@@ -321,24 +332,6 @@ h1 {
   background: rgba(255, 255, 255, 0.12);
   color: #fffaf0;
   font-weight: 580;
-}
-
-.membership-note {
-  display: block;
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  margin: 0;
-  padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #c9c5ba;
-  font-size: 0.92rem;
-  line-height: 1.4;
-}
-
-.membership-note a {
-  color: #fffaf0;
-  font-weight: 620;
 }
 
 .join-steps {
@@ -643,16 +636,8 @@ footer {
   }
 
   .sync-panel,
-  .join-steps,
-  .membership-note {
+  .join-steps {
     width: 100%;
-  }
-
-  .membership-note {
-    grid-column: auto;
-    margin-top: -2px;
-    padding: 8px 10px;
-    font-size: 0.78rem;
   }
 
   .sync-panel {

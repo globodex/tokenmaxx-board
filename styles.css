@@ -179,22 +179,6 @@ h1 span {
   line-height: 1.45;
 }
 
-.hero-facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
-}
-
-.hero-facts span {
-  border: 1px solid rgba(255, 250, 240, 0.18);
-  border-radius: 999px;
-  padding: 7px 11px;
-  color: #d8d3c5;
-  font-size: 0.82rem;
-  line-height: 1;
-}
-
 .participation-section {
   display: grid;
   gap: 14px;

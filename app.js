@@ -1,5 +1,4 @@
 const DATA_URL = "./data/profiles.json";
-const DAYS_IN_HEATMAP = 315;
 const config = window.TOKENMAXX_CONFIG || {};
 
 const fallbackProfiles = [
@@ -55,7 +54,6 @@ let sourceProfiles = {
   profiles: fallbackProfiles
 };
 let sortKey = "score";
-let activityMode = "daily";
 let featuredProfileId = null;
 
 const rows = document.querySelector("#leaderboardRows");
@@ -63,16 +61,15 @@ const resetButton = document.querySelector("#resetBoard");
 const copyButton = document.querySelector("#copyCommand");
 const joinCommand = document.querySelector("#joinCommand");
 const sortButtons = [...document.querySelectorAll(".sort-button")];
-const modeButtons = [...document.querySelectorAll(".mode-tabs button")];
 const featuredAvatar = document.querySelector("#featuredAvatar");
 const featuredName = document.querySelector("#featuredName");
 const featuredHandle = document.querySelector("#featuredHandle");
+const featuredScore = document.querySelector("#featuredScore");
 const featuredLifetime = document.querySelector("#featuredLifetime");
 const featuredPeak = document.querySelector("#featuredPeak");
 const featuredTask = document.querySelector("#featuredTask");
 const featuredCurrentStreak = document.querySelector("#featuredCurrentStreak");
 const featuredLongestStreak = document.querySelector("#featuredLongestStreak");
-const featuredHeatmap = document.querySelector("#featuredHeatmap");
 
 async function loadProfiles() {
   sourceProfiles = await loadSourceProfiles();
@@ -212,29 +209,6 @@ function sortedProfiles() {
   });
 }
 
-function activityLevel(profile, index) {
-  const wave = Math.sin((index + profile.activitySeed) / 8) + Math.cos((index + profile.activitySeed) / 19);
-  const recentBias = index > 210 ? 1 : 0;
-  const activeStreak = index > DAYS_IN_HEATMAP - profile.currentStreak ? 2 : 0;
-  const pulse = (index * profile.activitySeed) % 17 === 0 ? 2 : 0;
-  const rawLevel = Math.round(wave + recentBias + activeStreak + pulse + 2);
-  const level = {
-    daily: rawLevel,
-    weekly: Math.round((rawLevel + activityLevelBase(profile, index - 1) + activityLevelBase(profile, index - 2)) / 3),
-    cumulative: Math.round((rawLevel + index / 90) / 1.3)
-  }[activityMode];
-  return Math.max(0, Math.min(level, 6));
-}
-
-function activityLevelBase(profile, index) {
-  if (index < 0) return 0;
-  const wave = Math.sin((index + profile.activitySeed) / 8) + Math.cos((index + profile.activitySeed) / 19);
-  const recentBias = index > 210 ? 1 : 0;
-  const activeStreak = index > DAYS_IN_HEATMAP - profile.currentStreak ? 2 : 0;
-  const pulse = (index * profile.activitySeed) % 17 === 0 ? 2 : 0;
-  return Math.round(wave + recentBias + activeStreak + pulse + 2);
-}
-
 function renderFeatured(profile) {
   featuredProfileId = profile.id;
   if (featuredAvatar) {
@@ -247,24 +221,12 @@ function renderFeatured(profile) {
   }
   featuredName.textContent = profile.name;
   featuredHandle.textContent = profile.handle;
+  featuredScore.textContent = new Intl.NumberFormat("en-US").format(scoreFor(profile));
   featuredLifetime.textContent = formatCompact(profile.lifetimeTokens);
   featuredPeak.textContent = formatCompact(profile.peakTokens);
   featuredTask.textContent = formatTask(profile.longestTaskMinutes);
   featuredCurrentStreak.textContent = `${profile.currentStreak} days`;
   featuredLongestStreak.textContent = `${profile.longestStreak} days`;
-  renderHeatmap(profile);
-}
-
-function renderHeatmap(profile) {
-  featuredHeatmap.innerHTML = "";
-
-  Array.from({ length: DAYS_IN_HEATMAP }, (_, index) => {
-    const cell = document.createElement("span");
-    const level = activityLevel(profile, index);
-    cell.className = `level-${level}`;
-    cell.title = `${level} activity level`;
-    featuredHeatmap.append(cell);
-  });
 }
 
 function renderRows() {
@@ -274,8 +236,8 @@ function renderRows() {
     const row = document.createElement("tr");
     row.className = "leaderboard-row";
     row.innerHTML = `
-      <td><span class="rank">${index + 1}</span></td>
-      <td>
+      <td data-label="Rank"><span class="rank">${index + 1}</span></td>
+      <td data-label="Ambassador">
         <button class="person" type="button" data-feature="${escapeHtml(profile.id)}" aria-label="Feature ${escapeHtml(profile.name)}">
           <span class="mini-avatar" aria-hidden="true">${escapeHtml(initialsFor(profile.name))}</span>
           <span>
@@ -284,12 +246,12 @@ function renderRows() {
           </span>
         </button>
       </td>
-      <td>${formatCompact(profile.lifetimeTokens)}</td>
-      <td>${formatCompact(profile.peakTokens)}</td>
-      <td>${formatTask(profile.longestTaskMinutes)}</td>
-      <td>${profile.currentStreak} days</td>
-      <td>${profile.longestStreak} days</td>
-      <td class="score">${new Intl.NumberFormat("en-US").format(scoreFor(profile))}</td>
+      <td data-label="Lifetime">${formatCompact(profile.lifetimeTokens)}</td>
+      <td data-label="Peak">${formatCompact(profile.peakTokens)}</td>
+      <td data-label="Task">${formatTask(profile.longestTaskMinutes)}</td>
+      <td data-label="Current">${profile.currentStreak} days</td>
+      <td data-label="Longest">${profile.longestStreak} days</td>
+      <td class="score" data-label="Score">${new Intl.NumberFormat("en-US").format(scoreFor(profile))}</td>
     `;
     rows.append(row);
   });
@@ -337,15 +299,6 @@ sortButtons.forEach((button) => {
   });
 });
 
-modeButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    activityMode = button.dataset.mode;
-    modeButtons.forEach((item) => item.classList.toggle("active", item === button));
-    const featuredProfile = profiles.find((profile) => profile.id === featuredProfileId) || sortedProfiles()[0];
-    if (featuredProfile) renderHeatmap(featuredProfile);
-  });
-});
-
 copyButton.addEventListener("click", async () => {
   const command = joinCommand.textContent.trim();
 
@@ -353,7 +306,12 @@ copyButton.addEventListener("click", async () => {
     await navigator.clipboard.writeText(command);
     copyButton.textContent = "Copied";
   } catch {
-    copyButton.textContent = "Select";
+    const range = document.createRange();
+    const selection = window.getSelection();
+    range.selectNodeContents(joinCommand);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    copyButton.textContent = "Selected";
   }
 
   window.setTimeout(() => {

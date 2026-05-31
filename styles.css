@@ -63,13 +63,17 @@ button {
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 24px;
+  width: 100vw;
   min-height: 58px;
+  margin-left: calc(50% - 50vw);
+  padding-inline: max(24px, calc((100vw - 1320px) / 2 + 24px));
   border-bottom: 1px solid var(--soft);
   background: color-mix(in srgb, #fffffb 92%, transparent);
   backdrop-filter: blur(18px);
 }
 
 .brand {
+  justify-self: start;
   color: var(--ink);
   font-size: 0.98rem;
   font-weight: 680;
@@ -77,6 +81,7 @@ button {
 }
 
 .top-links {
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -589,6 +594,7 @@ footer {
   .site-header {
     min-height: 58px;
     gap: 14px;
+    padding-inline: 12px;
   }
 
   .landing-hero {

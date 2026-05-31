@@ -5,8 +5,10 @@
   "description": "Unofficial Codex ambassador scoreboard for tokens, streaks, and long-running tasks.",
   "scripts": {
     "start": "python3 -m http.server 5173",
-    "check": "node --check app.js && node --check scripts/profile-store.mjs && node --check scripts/update-profile.mjs && node --check scripts/sync-profile.mjs && node --test test/*.test.mjs",
+    "check": "node --check app.js && node --check scripts/profile-store.mjs && node --check scripts/update-profile.mjs && node --check scripts/sync-profile.mjs && node --check scripts/validate-profiles.mjs && node --check scripts/verify-pages.mjs && node --check .github/scripts/merge-leaderboard-submissions.mjs && npm run validate:data && node --test test/*.test.mjs",
     "update:profile": "node scripts/update-profile.mjs",
-    "sync:profile": "node scripts/sync-profile.mjs"
+    "sync:profile": "node scripts/sync-profile.mjs",
+    "validate:data": "node scripts/validate-profiles.mjs",
+    "verify:pages": "node scripts/verify-pages.mjs"
   }
 }

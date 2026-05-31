@@ -1,0 +1,85 @@
+name: Merge Leaderboard Submissions
+
+on:
+  schedule:
+    - cron: "17 14 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: leaderboard-submission-merge
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    outputs:
+      merged_count: ${{ steps.merge.outputs.merged_count }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Merge eligible leaderboard PRs
+        id: merge
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node .github/scripts/merge-leaderboard-submissions.mjs
+
+  deploy:
+    needs: merge
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Check out latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run checks
+        run: npm run check
+
+      - name: Prepare static site
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site/data _site/scripts
+          cp index.html app.js styles.css _site/
+          cp data/*.json _site/data/
+          cp scripts/profile-store.mjs _site/scripts/
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Verify deployed leaderboard data
+        env:
+          TOKENMAXX_PAGES_URL: ${{ steps.deployment.outputs.page_url }}
+          TOKENMAXX_VERIFY_TIMEOUT_MS: 240000
+        run: node scripts/verify-pages.mjs

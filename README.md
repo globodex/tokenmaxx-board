@@ -1,53 +1,40 @@
 # Tokenmaxx Board
 
-Unofficial scoreboard for Globodex Codex ambassadors. It tracks the profile-style numbers exposed by the Codex profile surface: lifetime tokens, peak tokens, longest task, current streak, and longest streak.
+Unofficial scoreboard for Globodex Codex ambassadors. It tracks the profile-style numbers visible on the Codex profile surface: lifetime tokens, peak tokens, longest task, current streak, and longest streak.
 
-## Project Use
+Live board: https://globodex.github.io/tokenmaxx-board/
 
-- Run lightweight ambassador leaderboards for workshops, office hours, demo nights, or internal community challenges.
-- Give ambassadors a concrete reason to join Globodex and bring their projects into the org.
-- Let people add or update profiles from a Codex-visible profile screenshot or manual stat values.
-- Seed an unranked invite directory from the public OpenAI Codex Ambassadors page without inventing stats.
-- Compare profiles through a calm, OpenAI-adjacent profile surface without using OpenAI branding.
-- Keep the project remixable: plain HTML, CSS, JavaScript, and a GitHub-backed JSON leaderboard.
+## How To Use It
 
-## Project Start
-
-Open `index.html` directly in a browser, or serve the folder locally:
-
-```bash
-python3 -m http.server 5173
-```
-
-Then open:
-
-```text
-http://localhost:5173
-```
-
-## Join The Board
-
-From this repo in Codex, run:
+Most people should interact with the board through Codex:
 
 ```text
 /update-stats setup
 ```
 
-Attach a screenshot of your Codex profile first. Codex should read the visible stats, add your optional location and searchable country, derive the flag emoji, sync the shared `data/profiles.json` file in `globodex/tokenmaxx-board`, run the local checks, and verify the page. Participants should be members of the [Globodex GitHub org](https://github.com/globodex) before they sync.
+Attach a Codex profile screenshot when prompted. Codex reads the visible stats, asks for optional location/country, updates `data/profiles.json`, runs checks, and verifies the page.
 
-After your row exists, returning updates are just:
+For later refreshes, use:
 
 ```text
 /update-stats
 ```
 
-If you want to update manually from a terminal:
+Do not invent stats. This project treats visible/profile-provided Codex profile stats as the source of truth.
+
+## Submission Paths
+
+There are two supported ways to update the board.
+
+**Direct sync for maintainers**
+
+Use this when your GitHub account can write to `globodex/tokenmaxx-board`:
 
 ```bash
-node scripts/sync-profile.mjs \
+npm run sync:profile -- \
   --name "Daniel Green" \
   --handle "@daniel.green" \
-  --location "San Francisco" \
+  --location "Kansas City" \
   --country "United States" \
   --lifetime 16B \
   --peak 1.7B \
@@ -56,34 +43,73 @@ node scripts/sync-profile.mjs \
   --longest 65
 ```
 
-Official OpenAI docs say Codex Profile displays lifetime tokens, peak tokens, streaks, longest task, and token activity. They do not document a public stats storage file or API, so this project treats visible/profile-provided stats as the source of truth.
+That command updates the shared `data/profiles.json` file in GitHub. GitHub Pages deploys from the latest `main` branch.
 
-## Shared Database
+**Pull request submissions**
 
-The shared database is the repo itself:
+Use this when someone submits a leaderboard update through a PR. The daily automation only auto-merges PRs that:
 
-- `data/profiles.json` is the canonical leaderboard data.
-- `data/ambassadors.json` is an unranked public directory sourced from the OpenAI Developers Codex Ambassadors page.
-- The static site reads that JSON file directly.
-- `scripts/sync-profile.mjs` uses the GitHub CLI to update the JSON in `globodex/tokenmaxx-board`.
-- Participants should be in the [Globodex GitHub org](https://github.com/globodex), or they should ask to join before syncing.
+- target `main`
+- are not drafts
+- change only `data/profiles.json`
+- pass `npm run check`
+- merge cleanly
 
-Set up GitHub CLI once:
+PRs that touch app code, workflows, README text, or other data files are intentionally skipped for manual review.
+
+## Daily Automation
+
+The repo has three GitHub Actions workflows:
+
+- `Validate` runs `npm run check` on pushes and pull requests.
+- `Merge Leaderboard Submissions` runs once per day at `14:17 UTC` and can also be started manually from the Actions tab.
+- `Deploy Pages` publishes the static site to GitHub Pages on pushes to `main`, once per day at `14:37 UTC`, or manually.
+
+The merge workflow validates each eligible data-only PR before merging it. After the merge pass, it deploys the latest `main` branch and checks that the live `data/profiles.json` matches the repository copy.
+
+## Local Development
+
+Serve the static app:
 
 ```bash
-gh auth login
+npm start
 ```
 
-Then run `/update-stats` from Codex. If the GitHub account is a Globodex member with write access to the repo, Codex can commit the updated profile data directly through GitHub.
+Then open:
 
-## Project Skill
+```text
+http://localhost:5173
+```
 
-This project is intentionally a tiny static app. The ranking model is simple and explainable: lifetime tokens are the default leaderboard order. Peak tokens, longest task, current streak, and longest streak are available as secondary sort modes.
+Run the full local check:
 
-## Notes
+```bash
+npm run check
+```
 
-- Shared leaderboard data lives in `data/profiles.json`.
-- Seed ambassador directory data lives in `data/ambassadors.json`.
-- The page reads the checked-in JSON data.
-- The app is unofficial and has no dependency on Codex account data or private telemetry.
-- Ranked profiles are empty until people opt in and sync their visible Codex profile stats.
+Validate only the leaderboard data:
+
+```bash
+npm run validate:data
+```
+
+Verify the deployed Pages data against local `data/profiles.json`:
+
+```bash
+npm run verify:pages
+```
+
+## Data Model
+
+- `data/profiles.json` is the canonical ranked leaderboard data.
+- `data/ambassadors.json` is an unranked public directory sourced from the OpenAI Developers Codex Ambassadors page.
+- Lifetime tokens are the default ranking lens.
+- Peak tokens, longest task, current streak, and longest streak are secondary sort modes.
+
+The app is plain HTML, CSS, and JavaScript. There is no private telemetry dependency and no public Codex stats API dependency.
+
+## Maintainer Notes
+
+GitHub Pages should be configured to publish with GitHub Actions, not the legacy branch source. GitHub documents that commits pushed by a workflow using the default `GITHUB_TOKEN` do not trigger a legacy Pages build, so this repo deploys Pages explicitly from Actions.
+
+Before changing the automation, keep the auto-merge criteria narrow. Leaderboard PRs should stay data-only; code and workflow changes should remain human-reviewed.

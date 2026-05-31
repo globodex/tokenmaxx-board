@@ -30,6 +30,7 @@ const countryOptions = document.querySelector("#countryOptions");
 const countryHint = document.querySelector("#countryHint");
 const sortButtons = [...document.querySelectorAll(".sort-button")];
 const updatedLabel = document.querySelector("#updatedLabel");
+const footerUpdatedLabel = document.querySelector("#footerUpdatedLabel");
 const ambassadorDirectory = document.querySelector("#ambassadorDirectory");
 const ambassadorSearch = document.querySelector("#ambassadorSearch");
 const ambassadorSourceLabel = document.querySelector("#ambassadorSourceLabel");
@@ -311,7 +312,9 @@ function linkIcon(kind) {
 }
 
 function render() {
-  if (updatedLabel) updatedLabel.textContent = formatUpdatedAt(sourceProfiles.updatedAt);
+  const updatedText = formatUpdatedAt(sourceProfiles.updatedAt);
+  if (updatedLabel) updatedLabel.textContent = updatedText;
+  if (footerUpdatedLabel) footerUpdatedLabel.textContent = updatedText;
   renderRows();
   renderAmbassadors();
 }

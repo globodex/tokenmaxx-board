@@ -456,6 +456,12 @@ h2 {
   text-decoration: underline;
 }
 
+.directory-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 5px;
+}
+
 .sort-control {
   display: flex;
   align-items: center;
@@ -1039,6 +1045,12 @@ footer {
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .directory-note {
+    display: grid;
+    gap: 2px;
+    max-width: 31ch;
   }
 
   .directory-search,

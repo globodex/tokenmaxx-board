@@ -237,7 +237,7 @@ function renderAmbassadors() {
     const total = ambassadors.length;
     const visible = pendingAmbassadors.length;
     const countText = term ? `${visible} matching ambassadors` : `${total} ambassadors listed`;
-    ambassadorSourceLabel.textContent = `${countText}. Stats appear only after a profile sync.`;
+    ambassadorSourceLabel.textContent = `${countText}.`;
   }
 
   ambassadorDirectory.innerHTML = pendingAmbassadors.map((ambassador) => {

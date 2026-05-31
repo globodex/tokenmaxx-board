@@ -1,6 +1,6 @@
 ## Style Prompt
 
-Restrained OpenAI-adjacent product demo for Tokenmaxx Board. The teaser should feel like a calm product walkthrough, not an ad: off-white surfaces, black hero bands, quiet borders, tabular stats, minimal copy, and smooth focus-pull transitions. The product UI is the visual hero.
+Restrained OpenAI-adjacent invitation and product demo for Tokenmaxx Board. The teaser should feel like a calm community invitation, not an ad: off-white surfaces, black hero bands, quiet borders, tabular stats, minimal copy, and smooth focus-pull transitions. The product UI is the visual hero, with the story focused on joining Globodex, uploading a Codex profile screenshot, and syncing a leaderboard row.
 
 ## Colors
 

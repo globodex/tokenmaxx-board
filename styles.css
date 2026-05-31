@@ -510,6 +510,45 @@ h2 {
   gap: 18px;
 }
 
+.directory-heading {
+  align-items: start;
+}
+
+.directory-toggle {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 14px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 580;
+}
+
+.directory-toggle:hover {
+  border-color: var(--ink);
+}
+
+.directory-toggle [aria-hidden="true"] {
+  width: 1ch;
+  font-size: 1rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.directory-body {
+  display: grid;
+  gap: 12px;
+}
+
+.directory-body[hidden] {
+  display: none;
+}
+
 .directory-search input {
   width: min(100vw - 48px, 320px);
   min-height: 40px;
@@ -1088,6 +1127,12 @@ button:focus-visible {
   .directory-search,
   .directory-search input {
     width: 100%;
+  }
+
+  .directory-toggle {
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: 0.78rem;
   }
 
   .directory-grid {

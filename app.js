@@ -34,6 +34,10 @@ const footerUpdatedLabel = document.querySelector("#footerUpdatedLabel");
 const ambassadorDirectory = document.querySelector("#ambassadorDirectory");
 const ambassadorSearch = document.querySelector("#ambassadorSearch");
 const ambassadorSourceLabel = document.querySelector("#ambassadorSourceLabel");
+const directorySection = document.querySelector("#ambassadors");
+const directoryToggle = document.querySelector("#directoryToggle");
+const directoryToggleLabel = document.querySelector("#directoryToggleLabel");
+const directoryBody = document.querySelector("#directoryBody");
 
 async function loadProfiles() {
   sourceProfiles = await loadSourceProfiles();
@@ -319,6 +323,22 @@ function render() {
   renderAmbassadors();
 }
 
+function setDirectoryExpanded(expanded) {
+  if (!directorySection || !directoryToggle || !directoryBody) return;
+
+  directorySection.classList.toggle("is-expanded", expanded);
+  directorySection.classList.toggle("is-collapsed", !expanded);
+  directoryToggle.setAttribute("aria-expanded", String(expanded));
+  directoryBody.hidden = !expanded;
+
+  if (directoryToggleLabel) {
+    directoryToggleLabel.textContent = expanded ? "Hide directory" : "Show directory";
+  }
+
+  const icon = directoryToggle.querySelector("[aria-hidden='true']");
+  if (icon) icon.textContent = expanded ? "-" : "+";
+}
+
 function profileId(name) {
   return name.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
@@ -369,6 +389,10 @@ populateCountryOptions();
 locationInput?.addEventListener("input", updateSetupCommand);
 countryInput?.addEventListener("input", updateSetupCommand);
 ambassadorSearch?.addEventListener("input", renderAmbassadors);
+directoryToggle?.addEventListener("click", () => {
+  setDirectoryExpanded(directoryToggle.getAttribute("aria-expanded") !== "true");
+});
+setDirectoryExpanded(false);
 
 sortButtons.forEach((button) => {
   button.addEventListener("click", () => {

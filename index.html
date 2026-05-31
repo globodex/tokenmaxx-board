@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tokenmaxx Board</title>
-    <link rel="stylesheet" href="./styles.css?v=utility-footer">
+    <link rel="stylesheet" href="./styles.css?v=directory-collapse">
   </head>
   <body>
     <main class="page-shell">
@@ -117,8 +117,8 @@
           </div>
         </section>
 
-        <section class="directory-section" id="ambassadors" aria-label="Codex ambassador directory">
-          <div class="section-heading">
+        <section class="directory-section is-collapsed" id="ambassadors" aria-label="Codex ambassador directory">
+          <div class="section-heading directory-heading">
             <div>
               <p class="eyebrow">Directory</p>
               <h2>Ambassadors to invite</h2>
@@ -128,12 +128,18 @@
                 <span>Stats appear only after a profile sync.</span>
               </p>
             </div>
+            <button class="directory-toggle" id="directoryToggle" type="button" aria-expanded="false" aria-controls="directoryBody">
+              <span id="directoryToggleLabel">Show directory</span>
+              <span aria-hidden="true">+</span>
+            </button>
+          </div>
+          <div class="directory-body" id="directoryBody" hidden>
             <label class="directory-search">
               <span class="sr-only">Search ambassador directory</span>
               <input id="ambassadorSearch" type="search" placeholder="Search ambassadors or cities">
             </label>
+            <div class="directory-grid" id="ambassadorDirectory"></div>
           </div>
-          <div class="directory-grid" id="ambassadorDirectory"></div>
         </section>
 
       </section>
@@ -150,6 +156,6 @@
       </footer>
     </main>
 
-    <script src="./app.js?v=utility-footer" type="module"></script>
+    <script src="./app.js?v=directory-collapse" type="module"></script>
   </body>
 </html>

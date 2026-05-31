@@ -4,7 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tokenmaxx Board</title>
-    <link rel="stylesheet" href="./styles.css?v=directory-collapse">
+    <script>
+      try {
+        const theme = localStorage.getItem("tokenmaxx-theme");
+        document.documentElement.dataset.theme = theme === "dark" ? "dark" : "light";
+      } catch {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
+    <link rel="stylesheet" href="./styles.css?v=hero-theme-toggle-directory-collapse">
   </head>
   <body>
     <main class="page-shell">
@@ -15,9 +23,14 @@
           <a href="#leaderboard"><span class="label-full">Leaderboard</span><span class="label-short">Board</span></a>
           <a href="https://github.com/globodex"><span class="label-full">Globodex</span><span class="label-short">GitHub</span></a>
         </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span class="theme-switch" aria-hidden="true"><span></span></span>
+          <span class="theme-label">Dark</span>
+        </button>
       </header>
 
       <section class="landing-hero" id="top" aria-label="Join Tokenmaxx Board">
+        <div class="hero-ambient" aria-hidden="true"></div>
         <div class="hero-copy">
           <h1><span>Codex Ambassador</span> <span>Leaderboard</span></h1>
           <p class="hero-lede">
@@ -156,6 +169,6 @@
       </footer>
     </main>
 
-    <script src="./app.js?v=directory-collapse" type="module"></script>
+    <script src="./app.js?v=hero-theme-toggle-directory-collapse" type="module"></script>
   </body>
 </html>

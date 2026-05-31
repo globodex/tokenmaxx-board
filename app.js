@@ -38,6 +38,8 @@ const directorySection = document.querySelector("#ambassadors");
 const directoryToggle = document.querySelector("#directoryToggle");
 const directoryToggleLabel = document.querySelector("#directoryToggleLabel");
 const directoryBody = document.querySelector("#directoryBody");
+const themeToggle = document.querySelector("[data-theme-toggle]");
+const themeLabel = themeToggle?.querySelector(".theme-label");
 
 async function loadProfiles() {
   sourceProfiles = await loadSourceProfiles();
@@ -339,6 +341,21 @@ function setDirectoryExpanded(expanded) {
   if (icon) icon.textContent = expanded ? "-" : "+";
 }
 
+function applyTheme(theme) {
+  const nextTheme = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = nextTheme;
+  if (themeToggle) themeToggle.setAttribute("aria-pressed", String(nextTheme === "dark"));
+  if (themeLabel) themeLabel.textContent = nextTheme === "dark" ? "Light" : "Dark";
+}
+
+function saveTheme(theme) {
+  try {
+    localStorage.setItem("tokenmaxx-theme", theme);
+  } catch {
+    // Ignore storage failures; the toggle still works for the current page.
+  }
+}
+
 function profileId(name) {
   return name.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
@@ -386,6 +403,7 @@ function updateSetupCommand() {
 }
 
 populateCountryOptions();
+applyTheme(document.documentElement.dataset.theme);
 locationInput?.addEventListener("input", updateSetupCommand);
 countryInput?.addEventListener("input", updateSetupCommand);
 ambassadorSearch?.addEventListener("input", renderAmbassadors);
@@ -393,6 +411,11 @@ directoryToggle?.addEventListener("click", () => {
   setDirectoryExpanded(directoryToggle.getAttribute("aria-expanded") !== "true");
 });
 setDirectoryExpanded(false);
+themeToggle?.addEventListener("click", () => {
+  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(nextTheme);
+  saveTheme(nextTheme);
+});
 
 sortButtons.forEach((button) => {
   button.addEventListener("click", () => {

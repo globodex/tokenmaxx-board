@@ -1,7 +1,22 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-31T15:33:21.494Z",
+  "updatedAt": "2026-05-31T16:27:59.923Z",
   "profiles": [
+    {
+      "id": "piyalitt-ittichaiwong",
+      "name": "Piyalitt Ittichaiwong",
+      "handle": "@piyalitt",
+      "location": "Bangkok",
+      "country": "Thailand",
+      "countryCode": "TH",
+      "flag": "🇹🇭",
+      "lifetimeTokens": 55800000000,
+      "peakTokens": 1300000000,
+      "longestTaskMinutes": 1554,
+      "currentStreak": 136,
+      "longestStreak": 136,
+      "activitySeed": 2215
+    },
     {
       "id": "adrianmelic",
       "name": "adrianmelic",
@@ -61,6 +76,36 @@
       "currentStreak": 56,
       "longestStreak": 65,
       "activitySeed": 1195
+    },
+    {
+      "id": "wencm",
+      "name": "wencm",
+      "handle": "@wencm",
+      "location": "",
+      "country": "",
+      "countryCode": "",
+      "flag": "",
+      "lifetimeTokens": 9747900000,
+      "peakTokens": 428100000,
+      "longestTaskMinutes": 160,
+      "currentStreak": 13,
+      "longestStreak": 45,
+      "activitySeed": 538
+    },
+    {
+      "id": "lordboba",
+      "name": "lordboba",
+      "handle": "@lordboba",
+      "location": "",
+      "country": "",
+      "countryCode": "",
+      "flag": "",
+      "lifetimeTokens": 5800000000,
+      "peakTokens": 1800000000,
+      "longestTaskMinutes": 557,
+      "currentStreak": 44,
+      "longestStreak": 44,
+      "activitySeed": 837
     }
   ]
 }

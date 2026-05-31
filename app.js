@@ -189,7 +189,7 @@ function renderRows() {
 
   rankedProfiles.forEach((profile, index) => {
     const row = document.createElement("tr");
-    const locationText = [profile.flag, profile.location].filter(Boolean).join(" ");
+    const locationText = [profile.flag, profile.location].filter(Boolean).join("\u00a0");
     row.className = "leaderboard-row";
     row.innerHTML = `
       <td data-label="Rank"><span class="rank">${index + 1}</span></td>

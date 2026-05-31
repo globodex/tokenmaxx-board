@@ -86,4 +86,4 @@ This project is intentionally a tiny static app. The ranking model is simple and
 - Seed ambassador directory data lives in `data/ambassadors.json`.
 - The page reads the checked-in JSON data.
 - The app is unofficial and has no dependency on Codex account data or private telemetry.
-- Seed profiles are fictional. Add real profiles manually only when people opt in.
+- Ranked profiles are empty until people opt in and sync their visible Codex profile stats.

@@ -7,70 +7,7 @@ import {
 const DATA_URL = "./data/profiles.json";
 const AMBASSADORS_URL = "./data/ambassadors.json";
 
-const fallbackProfiles = [
-  {
-    id: "ada-launch",
-    name: "Ada Launch",
-    handle: "@ada.launch",
-    location: "San Francisco",
-    country: "United States",
-    countryCode: "US",
-    flag: "🇺🇸",
-    lifetimeTokens: 12400000000,
-    peakTokens: 1300000000,
-    longestTaskMinutes: 1062,
-    currentStreak: 42,
-    longestStreak: 58,
-    activitySeed: 7
-  },
-  {
-    id: "max-demo",
-    name: "Max Demo",
-    handle: "@max.demo",
-    location: "New York",
-    country: "United States",
-    countryCode: "US",
-    flag: "🇺🇸",
-    lifetimeTokens: 9800000000,
-    peakTokens: 1100000000,
-    longestTaskMinutes: 860,
-    currentStreak: 35,
-    longestStreak: 49,
-    activitySeed: 13
-  },
-  {
-    id: "jules-merge",
-    name: "Jules Merge",
-    handle: "@jules.merge",
-    location: "London",
-    country: "United Kingdom",
-    countryCode: "GB",
-    flag: "🇬🇧",
-    lifetimeTokens: 8100000000,
-    peakTokens: 980000000,
-    longestTaskMinutes: 965,
-    currentStreak: 31,
-    longestStreak: 44,
-    activitySeed: 23
-  },
-  {
-    id: "riley-triage",
-    name: "Riley Triage",
-    handle: "@riley.triage",
-    location: "Toronto",
-    country: "Canada",
-    countryCode: "CA",
-    flag: "🇨🇦",
-    lifetimeTokens: 6600000000,
-    peakTokens: 760000000,
-    longestTaskMinutes: 738,
-    currentStreak: 28,
-    longestStreak: 40,
-    activitySeed: 31
-  }
-];
-
-let profiles = fallbackProfiles;
+let profiles = [];
 let ambassadors = [];
 let ambassadorSource = {
   source: "",
@@ -78,7 +15,7 @@ let ambassadorSource = {
 };
 let sourceProfiles = {
   updatedAt: "1970-01-01T00:00:00.000Z",
-  profiles: fallbackProfiles
+  profiles: []
 };
 let sortKey = "lifetimeTokens";
 
@@ -125,14 +62,12 @@ async function loadSourceProfiles() {
 
     return {
       updatedAt: parsed.updatedAt || "1970-01-01T00:00:00.000Z",
-      profiles: Array.isArray(parsed.profiles) && parsed.profiles.length > 0
-        ? parsed.profiles.map(normalizeProfile)
-        : fallbackProfiles
+      profiles: Array.isArray(parsed.profiles) ? parsed.profiles.map(normalizeProfile) : []
     };
   } catch {
     return {
       updatedAt: "1970-01-01T00:00:00.000Z",
-      profiles: fallbackProfiles
+      profiles: []
     };
   }
 }
@@ -235,7 +170,21 @@ function renderRows() {
   rows.innerHTML = "";
   rows.dataset.sort = sortKey;
 
-  sortedProfiles().forEach((profile, index) => {
+  const rankedProfiles = sortedProfiles();
+  if (!rankedProfiles.length) {
+    const row = document.createElement("tr");
+    row.className = "empty-row";
+    row.innerHTML = `
+      <td colspan="7">
+        <strong>No ranked profiles yet.</strong>
+        <span>Attach a Codex profile screenshot and run <code>/update-stats setup</code> to claim the first row.</span>
+      </td>
+    `;
+    rows.append(row);
+    return;
+  }
+
+  rankedProfiles.forEach((profile, index) => {
     const row = document.createElement("tr");
     const locationText = [profile.flag, profile.location].filter(Boolean).join(" ");
     row.className = "leaderboard-row";

@@ -675,6 +675,37 @@ tbody tr:hover td {
   background: var(--panel);
 }
 
+.empty-row td {
+  border: 1px solid var(--soft);
+  border-radius: 9px;
+  padding: 28px;
+  background: color-mix(in srgb, var(--panel) 88%, var(--bg));
+  text-align: center;
+  white-space: normal;
+}
+
+.empty-row strong,
+.empty-row span {
+  display: block;
+}
+
+.empty-row strong {
+  margin-bottom: 6px;
+  font-size: 1rem;
+  font-weight: 620;
+}
+
+.empty-row span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.empty-row code {
+  color: var(--ink);
+  font-size: 0.94em;
+}
+
 tbody tr:last-child td {
   border-bottom: 1px solid var(--soft);
 }
@@ -1017,6 +1048,10 @@ footer {
     border-radius: 8px;
     padding: 14px;
     background: var(--panel);
+  }
+
+  .empty-row td {
+    padding: 22px 16px;
   }
 
   .leaderboard-row td:first-child {

@@ -1,0 +1,1461 @@
+{
+  "version": 1,
+  "source": "https://developers.openai.com/community/codex-ambassadors",
+  "sourceLabel": "OpenAI Developers Codex Ambassadors directory",
+  "capturedAt": "2026-05-31T03:21:32.419Z",
+  "ambassadors": [
+    {
+      "city": "San Francisco",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "adam-chan",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/itsajchan/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/itsajchan"
+        },
+        {
+          "kind": "site",
+          "url": "https://ajchan.io/"
+        }
+      ],
+      "name": "Adam Chan"
+    },
+    {
+      "city": "Pune",
+      "country": "India",
+      "countryCode": "IN",
+      "id": "adhish-thite",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/adhish-thite"
+        },
+        {
+          "kind": "site",
+          "url": "https://adhishthite.com/"
+        }
+      ],
+      "name": "Adhish Thite"
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "countryCode": "SG",
+      "id": "agrim-singh",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://sg.linkedin.com/in/agrims"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/agrimsingh"
+        },
+        {
+          "kind": "site",
+          "url": "https://www.codewithai.xyz/"
+        }
+      ],
+      "name": "Agrim Singh"
+    },
+    {
+      "city": "Monterrey",
+      "country": "Mexico",
+      "countryCode": "MX",
+      "id": "aileen-villanueva",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/aileen-villanueva-31155666/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/aileenvl"
+        },
+        {
+          "kind": "site",
+          "url": "https://www.aileenvl.com/"
+        }
+      ],
+      "name": "Aileen Villanueva"
+    },
+    {
+      "city": "Vienna",
+      "country": "Austria",
+      "countryCode": "AT",
+      "id": "alex-gavrilescu",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://at.linkedin.com/in/alexandrugavrilescu"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/mrlesk"
+        },
+        {
+          "kind": "site",
+          "url": "https://mrlesk.com/"
+        }
+      ],
+      "name": "Alex Gavrilescu"
+    },
+    {
+      "city": "Pune",
+      "country": "India",
+      "countryCode": "IN",
+      "id": "aman-mogal",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/aman-mogal-b7773b246/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/Aman25m"
+        }
+      ],
+      "name": "Aman Mogal"
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "countryCode": "VN",
+      "id": "an-nguyen",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/annguyenfoss/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/annguyenfoss"
+        }
+      ],
+      "name": "An Nguyen"
+    },
+    {
+      "city": "Heilbronn",
+      "country": "Germany",
+      "countryCode": "DE",
+      "id": "anish-navalgund",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/anish-k-navalgund"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/NavalgundAnish"
+        }
+      ],
+      "name": "Anish Navalgund"
+    },
+    {
+      "city": "Sydney",
+      "country": "Australia",
+      "countryCode": "AU",
+      "id": "arafat-tehsin",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/arafattehsin/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/arafattehsin"
+        },
+        {
+          "kind": "site",
+          "url": "https://arafattehsin.com/"
+        }
+      ],
+      "name": "Arafat Tehsin"
+    },
+    {
+      "city": "Mexico City",
+      "country": "Mexico",
+      "countryCode": "MX",
+      "id": "ben-kim",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/benkimbuilds/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/benkimbuilds"
+        },
+        {
+          "kind": "site",
+          "url": "http://ben-k.im/"
+        }
+      ],
+      "name": "Ben Kim"
+    },
+    {
+      "city": "Seattle",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "benjamin-steinher",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/bensteinher"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/bee_human_"
+        },
+        {
+          "kind": "site",
+          "url": "https://thought.partners/"
+        }
+      ],
+      "name": "Benjamin Steinher"
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "countryCode": "SG",
+      "id": "brian-chew",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://sg.linkedin.com/in/brian-chew"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/brianchew"
+        },
+        {
+          "kind": "site",
+          "url": "https://bchewy.com/"
+        }
+      ],
+      "name": "Brian Chew"
+    },
+    {
+      "city": "Austin",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "bryce-harris",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/brycelegacy/"
+        }
+      ],
+      "name": "Bryce Harris"
+    },
+    {
+      "city": "Kuala Lumpur",
+      "country": "Malaysia",
+      "countryCode": "MY",
+      "id": "chong-siow-yen",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/chongsiowyen/"
+        },
+        {
+          "kind": "site",
+          "url": "https://siowyenchong.vercel.app/"
+        }
+      ],
+      "name": "Chong Siow Yen"
+    },
+    {
+      "city": "Kansas City",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "daniel-green",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/danielpgreen/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/dgrreen"
+        }
+      ],
+      "name": "Daniel Green"
+    },
+    {
+      "city": "Goeppingen",
+      "country": "Germany",
+      "countryCode": "DE",
+      "id": "david-finsterwalder",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://de.linkedin.com/in/david-finsterwalder-3b8985a4"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/DFinsterwalder"
+        },
+        {
+          "kind": "site",
+          "url": "https://noelith.ai/"
+        }
+      ],
+      "name": "David Finsterwalder"
+    },
+    {
+      "city": "Manila",
+      "country": "Philippines",
+      "countryCode": "PH",
+      "id": "david-marquez",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://linkedin.com/in/dayvough"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/dayvough"
+        },
+        {
+          "kind": "site",
+          "url": "http://dayvough.com/"
+        }
+      ],
+      "name": "David Marquez"
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "countryCode": "AU",
+      "id": "dr-sam-donegan",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/samueldonegan/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/Sam_Donegan"
+        }
+      ],
+      "name": "Dr Sam Donegan"
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "countryCode": "KE",
+      "id": "felix-jumason",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/felix-jumason-9b209a243/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/blackie_360"
+        }
+      ],
+      "name": "Felix Jumason"
+    },
+    {
+      "city": "Rio de Janeiro",
+      "country": "Brazil",
+      "countryCode": "BR",
+      "id": "glaucia-lemos",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/glaucialemos/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/glaucia_lemos86"
+        }
+      ],
+      "name": "Glaucia Lemos"
+    },
+    {
+      "city": "Miami",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "grant-kurz",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://linkedin.com/in/grant-kurz"
+        }
+      ],
+      "name": "Grant Kurz"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "countryCode": "KR",
+      "id": "goobong-jeong",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/gb-jeong"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/bongbonggg97"
+        }
+      ],
+      "name": "Goobong Jeong"
+    },
+    {
+      "city": "Taichung City",
+      "country": "Taiwan",
+      "countryCode": "TW",
+      "id": "harry-ng",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://tw.linkedin.com/in/harryng"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/harryworld"
+        },
+        {
+          "kind": "site",
+          "url": "https://buildwithharry.com/"
+        }
+      ],
+      "name": "Harry Ng"
+    },
+    {
+      "city": "Mississauga",
+      "country": "Canada",
+      "countryCode": "CA",
+      "id": "hetarth-parikh",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/hetarthparikh"
+        }
+      ],
+      "name": "Hetarth Parikh"
+    },
+    {
+      "city": "Manta",
+      "country": "Ecuador",
+      "countryCode": "EC",
+      "id": "israel-j-gomez",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://ec.linkedin.com/in/israelgo93"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/israelgo93"
+        }
+      ],
+      "name": "Israel J. Gomez"
+    },
+    {
+      "city": "Munich",
+      "country": "Germany",
+      "countryCode": "DE",
+      "id": "jan-chen",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/chen-jan"
+        }
+      ],
+      "name": "Jan Chen"
+    },
+    {
+      "city": "Munich",
+      "country": "Germany",
+      "countryCode": "DE",
+      "id": "janet-brinz",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/dr-janet-brinz/"
+        }
+      ],
+      "name": "Janet Brinz"
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "countryCode": "CA",
+      "id": "jay-park",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://ca.linkedin.com/in/jaykbpark"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/JayPark_io"
+        },
+        {
+          "kind": "site",
+          "url": "https://jaykbpark.com/"
+        }
+      ],
+      "name": "Jay Park"
+    },
+    {
+      "city": "Montreal",
+      "country": "Canada",
+      "countryCode": "CA",
+      "id": "jhin-lee",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/leehack"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/leehack"
+        },
+        {
+          "kind": "site",
+          "url": "https://leehack.com/"
+        }
+      ],
+      "name": "Jhin Lee"
+    },
+    {
+      "city": "Lagos",
+      "country": "Nigeria",
+      "countryCode": "NG",
+      "id": "joshua-omobola",
+      "links": [
+        {
+          "kind": "site",
+          "url": "https://koha.wtf/"
+        }
+      ],
+      "name": "Joshua Omobola"
+    },
+    {
+      "city": "Auckland",
+      "country": "New Zealand",
+      "countryCode": "NZ",
+      "id": "jp-caparas",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://nz.linkedin.com/in/jpcaparas"
+        },
+        {
+          "kind": "site",
+          "url": "https://jpcaparas.com/"
+        }
+      ],
+      "name": "JP Caparas"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "countryCode": "KR",
+      "id": "junho-kong",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/junho-kong"
+        }
+      ],
+      "name": "Junho Kong"
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "countryCode": "CA",
+      "id": "kai-simpson-sigurdson",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/kai-simpson-270721147/"
+        },
+        {
+          "kind": "site",
+          "url": "https://cherryresearch.github.io/home.html"
+        }
+      ],
+      "name": "Kai Simpson-Sigurdson"
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "countryCode": "AU",
+      "id": "kasey-robinson",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/bitpixi/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/bitpixi"
+        },
+        {
+          "kind": "site",
+          "url": "https://kasey.design/"
+        }
+      ],
+      "name": "Kasey Robinson"
+    },
+    {
+      "city": "Hyderabad",
+      "country": "India",
+      "countryCode": "IN",
+      "id": "kushal-vijay",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://in.linkedin.com/in/kushalvijay"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/KushalVijay_"
+        }
+      ],
+      "name": "Kushal Vijay"
+    },
+    {
+      "city": "Orlando",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "leonard-gofman",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/lgofman"
+        },
+        {
+          "kind": "site",
+          "url": "https://gofman.dev/"
+        }
+      ],
+      "name": "Leonard Gofman"
+    },
+    {
+      "city": "Amsterdam",
+      "country": "Netherlands",
+      "countryCode": "NL",
+      "id": "leonardo-vida",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://nl.linkedin.com/in/leonardovida"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/leonardojvida"
+        }
+      ],
+      "name": "Leonardo Vida"
+    },
+    {
+      "city": "Nairobi",
+      "country": "Kenya",
+      "countryCode": "KE",
+      "id": "mark-gatere",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/gateremark/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/gatere_mark"
+        },
+        {
+          "kind": "site",
+          "url": "https://gate-re.com/"
+        }
+      ],
+      "name": "Mark Gatere"
+    },
+    {
+      "city": "Montevideo",
+      "country": "Uruguay",
+      "countryCode": "UY",
+      "id": "mateo-kruk",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/mateokruk"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/mateokruk_"
+        },
+        {
+          "kind": "site",
+          "url": "https://mateokruk.com/"
+        }
+      ],
+      "name": "Mateo Kruk"
+    },
+    {
+      "city": "Madrid",
+      "country": "Spain",
+      "countryCode": "ES",
+      "id": "matteo-giorgetti",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://es.linkedin.com/in/matteo-giorgetti"
+        },
+        {
+          "kind": "site",
+          "url": "https://mgiorgetti.com/"
+        }
+      ],
+      "name": "Matteo Giorgetti"
+    },
+    {
+      "city": "Melbourne",
+      "country": "Australia",
+      "countryCode": "AU",
+      "id": "matthew-blode",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/matthewblode/"
+        }
+      ],
+      "name": "Matthew Blode"
+    },
+    {
+      "city": "Christchurch",
+      "country": "New Zealand",
+      "countryCode": "NZ",
+      "id": "max-aitel",
+      "links": [
+        {
+          "kind": "x",
+          "url": "https://x.com/AitelMax"
+        }
+      ],
+      "name": "Max Aitel"
+    },
+    {
+      "city": "Buenos Aires",
+      "country": "Argentina",
+      "countryCode": "AR",
+      "id": "maximiliano-firtman",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/firtman/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/firt"
+        },
+        {
+          "kind": "site",
+          "url": "https://firt.dev/"
+        }
+      ],
+      "name": "Maximiliano Firtman"
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "countryCode": "IN",
+      "id": "mayank-raj",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://in.linkedin.com/in/mayank9856"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/Mayank9856"
+        },
+        {
+          "kind": "site",
+          "url": "https://mayankraj.com/"
+        }
+      ],
+      "name": "Mayank Raj"
+    },
+    {
+      "city": "Dhaka",
+      "country": "Bangladesh",
+      "countryCode": "BD",
+      "id": "md-shahriyar-al-mustakim-mitul",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/mitul-shahriyar/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/mitul_shahriyar"
+        }
+      ],
+      "name": "MD Shahriyar Al Mustakim Mitul"
+    },
+    {
+      "city": "Berkeley",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "mert-gulsun",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/mert-gulsun/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/mert_gulsun"
+        },
+        {
+          "kind": "site",
+          "url": "https://mertgulsun.com/"
+        }
+      ],
+      "name": "Mert Gulsun"
+    },
+    {
+      "city": "Boston/Cambridge",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "michael-gritzbach",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/michael-gritzbach/"
+        },
+        {
+          "kind": "site",
+          "url": "https://michael-gritzbach.eu/"
+        }
+      ],
+      "name": "Michael Gritzbach"
+    },
+    {
+      "city": "Orlando",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "michael-rusu",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/michael-rusudev"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/Tech_guyMike"
+        },
+        {
+          "kind": "site",
+          "url": "https://www.michaelml.dev/"
+        }
+      ],
+      "name": "Michael Rusu"
+    },
+    {
+      "city": "Salt Lake City",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "michael-wall",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/soundformovement"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/sound4movement"
+        },
+        {
+          "kind": "site",
+          "url": "https://www.soundformovement.com/"
+        }
+      ],
+      "name": "Michael Wall"
+    },
+    {
+      "city": "Barcelona",
+      "country": "Spain",
+      "countryCode": "ES",
+      "id": "miguel-guerrero",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/miguelguer/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/apolmig"
+        }
+      ],
+      "name": "Miguel Guerrero"
+    },
+    {
+      "city": "Wroclaw",
+      "country": "Poland",
+      "countryCode": "PL",
+      "id": "mike-grabowski",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/grabbou"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/grabbou"
+        }
+      ],
+      "name": "Mike Grabowski"
+    },
+    {
+      "city": "Warsaw",
+      "country": "Poland",
+      "countryCode": "PL",
+      "id": "mike-grabowski",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/grabbou"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/grabbou"
+        }
+      ],
+      "name": "Mike Grabowski"
+    },
+    {
+      "city": "Berlin",
+      "country": "Germany",
+      "countryCode": "DE",
+      "id": "mike-grabowski",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/grabbou"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/grabbou"
+        }
+      ],
+      "name": "Mike Grabowski"
+    },
+    {
+      "city": "Dubai",
+      "country": "United Arab Emirates",
+      "countryCode": "AE",
+      "id": "mike-grabowski",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/grabbou"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/grabbou"
+        }
+      ],
+      "name": "Mike Grabowski"
+    },
+    {
+      "city": "Munich",
+      "country": "Germany",
+      "countryCode": "DE",
+      "id": "muhtasham-oblokulov",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://de.linkedin.com/in/muhtasham"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/Muhtasham9"
+        },
+        {
+          "kind": "site",
+          "url": "https://muhtasham.github.io/blog"
+        }
+      ],
+      "name": "Muhtasham Oblokulov"
+    },
+    {
+      "city": "Bekasi",
+      "country": "Indonesia",
+      "countryCode": "ID",
+      "id": "naufaldi-rafif",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/naufaldirafif/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/F2aldi"
+        },
+        {
+          "kind": "site",
+          "url": "https://faldi.xyz/"
+        }
+      ],
+      "name": "Naufaldi Rafif"
+    },
+    {
+      "city": "Chennai",
+      "country": "India",
+      "countryCode": "IN",
+      "id": "ompragash-viswanathan",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/ompragash/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/ompragash_v"
+        }
+      ],
+      "name": "Ompragash Viswanathan"
+    },
+    {
+      "city": "New Delhi",
+      "country": "India",
+      "countryCode": "IN",
+      "id": "parampreet-singh",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/param302"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/Param3021"
+        },
+        {
+          "kind": "site",
+          "url": "https://itsparam.in/"
+        }
+      ],
+      "name": "Parampreet Singh"
+    },
+    {
+      "city": "Bangkok",
+      "country": "Thailand",
+      "countryCode": "TH",
+      "id": "piyalitt-ittichaiwong",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://uk.linkedin.com/in/piyalitt"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/piyalitt_i"
+        }
+      ],
+      "name": "Piyalitt Ittichaiwong"
+    },
+    {
+      "city": "New York",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "pranav-dhingra",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/pranav-dhingra/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/pcatattacks"
+        },
+        {
+          "kind": "site",
+          "url": "https://pranavdhingra.com/"
+        }
+      ],
+      "name": "Pranav Dhingra"
+    },
+    {
+      "city": "Austin",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "raghu-subramanian",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://linkedin.com/in/raghuraman1"
+        },
+        {
+          "kind": "site",
+          "url": "https://raghoo.me/"
+        }
+      ],
+      "name": "Raghu Subramanian"
+    },
+    {
+      "city": "Lima",
+      "country": "Peru",
+      "countryCode": "PE",
+      "id": "railly-hugo",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/railly-hugo"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/RaillyHugo"
+        },
+        {
+          "kind": "site",
+          "url": "https://www.railly.dev/"
+        }
+      ],
+      "name": "Railly Hugo"
+    },
+    {
+      "city": "Gothenburg",
+      "country": "Sweden",
+      "countryCode": "SE",
+      "id": "raiyan-yahya",
+      "links": [
+        {
+          "kind": "site",
+          "url": "https://www.github.com/raiyanyahya"
+        }
+      ],
+      "name": "Raiyan Yahya"
+    },
+    {
+      "city": "Toronto",
+      "country": "Canada",
+      "countryCode": "CA",
+      "id": "ramona-sartipi",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://ca.linkedin.com/in/ramonable"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/ramonable"
+        }
+      ],
+      "name": "Ramona Sartipi"
+    },
+    {
+      "city": "Amsterdam",
+      "country": "Netherlands",
+      "countryCode": "NL",
+      "id": "rogier-muller",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "http://linkedin.com/in/rogyr"
+        }
+      ],
+      "name": "Rogier Muller"
+    },
+    {
+      "city": "Toronto",
+      "country": "Canada",
+      "countryCode": "CA",
+      "id": "saurabh-suri",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://ca.linkedin.com/in/surisuri"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/surim0n"
+        }
+      ],
+      "name": "Saurabh Suri"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "countryCode": "KR",
+      "id": "seowoo-han",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/swhan0329"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/swhan0329"
+        },
+        {
+          "kind": "site",
+          "url": "https://swhan0329.github.io/"
+        }
+      ],
+      "name": "Seowoo Han"
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "countryCode": "CA",
+      "id": "shawn",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/shawnesquivel/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/shawnbuilds"
+        },
+        {
+          "kind": "site",
+          "url": "https://shawn-builds.com/"
+        }
+      ],
+      "name": "Shawn"
+    },
+    {
+      "city": "New Delhi",
+      "country": "India",
+      "countryCode": "IN",
+      "id": "shivay-lamba",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/shivaylamba"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/howdevelop"
+        },
+        {
+          "kind": "site",
+          "url": "https://shivaylamba.me/"
+        }
+      ],
+      "name": "Shivay Lamba"
+    },
+    {
+      "city": "Vancouver",
+      "country": "Canada",
+      "countryCode": "CA",
+      "id": "sigrid-jin",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/sigridjineth/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/realsigridjin"
+        }
+      ],
+      "name": "Sigrid Jin"
+    },
+    {
+      "city": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "countryCode": "VN",
+      "id": "son-le-thanh",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/son-the-builder/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/thsonvt"
+        }
+      ],
+      "name": "Son Le Thanh"
+    },
+    {
+      "city": "West Lafayette",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "sriram-kiron",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/sriramkiron/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/sriramkiron"
+        },
+        {
+          "kind": "site",
+          "url": "https://ramaway.com/"
+        }
+      ],
+      "name": "Sriram Kiron"
+    },
+    {
+      "city": "Los Angeles",
+      "country": "United States",
+      "countryCode": "US",
+      "id": "tyler-xiao",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/tyler-xiao"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/tylerxdev"
+        },
+        {
+          "kind": "x",
+          "url": "https://www.tylerx.dev/"
+        }
+      ],
+      "name": "Tyler Xiao"
+    },
+    {
+      "city": "Kochi",
+      "country": "India",
+      "countryCode": "IN",
+      "id": "vaishakh-suresh",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://in.linkedin.com/in/vaishakh3"
+        }
+      ],
+      "name": "Vaishakh Suresh"
+    },
+    {
+      "city": "Las Palmas de Gran Canaria",
+      "country": "Spain",
+      "countryCode": "ES",
+      "id": "wenceslao-c-rceles",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/wensicm"
+        }
+      ],
+      "name": "Wenceslao Cárceles"
+    },
+    {
+      "city": "Seoul",
+      "country": "South Korea",
+      "countryCode": "KR",
+      "id": "woojun-jung",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/w00jun"
+        }
+      ],
+      "name": "Woojun Jung"
+    },
+    {
+      "city": "Taipei",
+      "country": "Taiwan",
+      "countryCode": "TW",
+      "id": "yang-tung-hao",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://linkedin.com/in/tom-yang-b02606234"
+        }
+      ],
+      "name": "Yang Tung-Hao"
+    },
+    {
+      "city": "Bengaluru",
+      "country": "India",
+      "countryCode": "IN",
+      "id": "yashraj-nayak",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/yashrajnayak/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/yashrajnayak"
+        },
+        {
+          "kind": "site",
+          "url": "http://yashrajnayak.dev/"
+        }
+      ],
+      "name": "Yashraj Nayak"
+    },
+    {
+      "city": "Mumbai",
+      "country": "India",
+      "countryCode": "IN",
+      "id": "yogesh-singh",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/yogeshsingh2810/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/_yogeshsingh"
+        }
+      ],
+      "name": "Yogesh Singh"
+    },
+    {
+      "city": "Tokyo",
+      "country": "Japan",
+      "countryCode": "JP",
+      "id": "yuta-hayashi",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/yuta-hayashi/"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/nukonuko"
+        },
+        {
+          "kind": "site",
+          "url": "https://yutahayashi.com/"
+        }
+      ],
+      "name": "Yuta Hayashi"
+    },
+    {
+      "city": "Singapore",
+      "country": "Singapore",
+      "countryCode": "SG",
+      "id": "zane-chee",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://sg.linkedin.com/in/zanechee"
+        },
+        {
+          "kind": "x",
+          "url": "https://x.com/injaneity"
+        },
+        {
+          "kind": "site",
+          "url": "https://zanechee.dev/"
+        }
+      ],
+      "name": "Zane Chee"
+    }
+  ]
+}

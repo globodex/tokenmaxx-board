@@ -5,6 +5,7 @@ import {
 } from "./scripts/profile-store.mjs";
 
 const DATA_URL = "./data/profiles.json";
+const AMBASSADORS_URL = "./data/ambassadors.json";
 
 const fallbackProfiles = [
   {
@@ -70,6 +71,11 @@ const fallbackProfiles = [
 ];
 
 let profiles = fallbackProfiles;
+let ambassadors = [];
+let ambassadorSource = {
+  source: "",
+  sourceLabel: "Public Codex Ambassador directory"
+};
 let sourceProfiles = {
   updatedAt: "1970-01-01T00:00:00.000Z",
   profiles: fallbackProfiles
@@ -87,10 +93,28 @@ const countryOptions = document.querySelector("#countryOptions");
 const countryHint = document.querySelector("#countryHint");
 const sortButtons = [...document.querySelectorAll(".sort-button")];
 const updatedLabel = document.querySelector("#updatedLabel");
+const ambassadorDirectory = document.querySelector("#ambassadorDirectory");
+const ambassadorSearch = document.querySelector("#ambassadorSearch");
+const ambassadorSourceLabel = document.querySelector("#ambassadorSourceLabel");
 
 async function loadProfiles() {
   sourceProfiles = await loadSourceProfiles();
   return sourceProfiles.profiles;
+}
+
+async function loadAmbassadors() {
+  try {
+    const response = await fetch(AMBASSADORS_URL, { cache: "no-store" });
+    if (!response.ok) throw new Error(`Unable to load ${AMBASSADORS_URL}`);
+    const parsed = await response.json();
+    ambassadorSource = {
+      source: parsed.source || "",
+      sourceLabel: parsed.sourceLabel || "Public Codex Ambassador directory"
+    };
+    return Array.isArray(parsed.ambassadors) ? parsed.ambassadors.map(normalizeAmbassador) : [];
+  } catch {
+    return [];
+  }
 }
 
 async function loadSourceProfiles() {
@@ -134,6 +158,20 @@ function normalizeProfile(profile) {
     currentStreak: Number(profile.currentStreak ?? profile.streak ?? 0),
     longestStreak: Number(profile.longestStreak ?? profile.streak ?? 0),
     activitySeed: Number(profile.activitySeed ?? seedFromText(id))
+  };
+}
+
+function normalizeAmbassador(ambassador) {
+  const name = String(ambassador.name || "Unnamed ambassador").trim();
+  const id = ambassador.id || profileId(name);
+
+  return {
+    id,
+    name,
+    city: String(ambassador.city || "").trim(),
+    country: String(ambassador.country || "").trim(),
+    countryCode: String(ambassador.countryCode || "").trim().toUpperCase(),
+    links: Array.isArray(ambassador.links) ? ambassador.links : []
   };
 }
 
@@ -222,9 +260,58 @@ function renderRows() {
   });
 }
 
+function ambassadorMatches(ambassador, term) {
+  if (!term) return true;
+
+  return [
+    ambassador.name,
+    ambassador.city,
+    ambassador.country,
+    ambassador.countryCode
+  ].some((value) => value.toLowerCase().includes(term));
+}
+
+function renderAmbassadors() {
+  if (!ambassadorDirectory) return;
+
+  const syncedIds = new Set(profiles.map((profile) => profile.id));
+  const term = ambassadorSearch?.value.trim().toLowerCase() || "";
+  const pendingAmbassadors = ambassadors
+    .filter((ambassador) => !syncedIds.has(ambassador.id))
+    .filter((ambassador) => ambassadorMatches(ambassador, term))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  if (ambassadorSourceLabel) {
+    const total = ambassadors.length;
+    const visible = pendingAmbassadors.length;
+    const countText = term ? `${visible} matching ambassadors` : `${total} ambassadors listed`;
+    ambassadorSourceLabel.textContent = `${countText}. Stats appear only after a profile sync.`;
+  }
+
+  ambassadorDirectory.innerHTML = pendingAmbassadors.map((ambassador) => {
+    const flag = flagFromCountryCode(ambassador.countryCode);
+    const location = [ambassador.city, ambassador.country].filter(Boolean).join(", ");
+    const links = ambassador.links
+      .map((link) => `<a href="${escapeHtml(link.url)}" rel="noopener noreferrer" target="_blank">${escapeHtml(link.kind)}</a>`)
+      .join("");
+
+    return `
+      <article class="ambassador-card">
+        <div>
+          <p>${escapeHtml(flag)} ${escapeHtml(ambassador.name)}</p>
+          <span>${escapeHtml(location)}</span>
+        </div>
+        <strong>Awaiting stats</strong>
+        ${links ? `<nav aria-label="${escapeHtml(`${ambassador.name} links`)}">${links}</nav>` : ""}
+      </article>
+    `;
+  }).join("");
+}
+
 function render() {
   if (updatedLabel) updatedLabel.textContent = formatUpdatedAt(sourceProfiles.updatedAt);
   renderRows();
+  renderAmbassadors();
 }
 
 function profileId(name) {
@@ -276,6 +363,7 @@ function updateSetupCommand() {
 populateCountryOptions();
 locationInput?.addEventListener("input", updateSetupCommand);
 countryInput?.addEventListener("input", updateSetupCommand);
+ambassadorSearch?.addEventListener("input", renderAmbassadors);
 
 sortButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -313,7 +401,8 @@ async function copyCommand(button) {
   }, 1600);
 }
 
-loadProfiles().then((loadedProfiles) => {
+Promise.all([loadProfiles(), loadAmbassadors()]).then(([loadedProfiles, loadedAmbassadors]) => {
   profiles = loadedProfiles;
+  ambassadors = loadedAmbassadors;
   render();
 });

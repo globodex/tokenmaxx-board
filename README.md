@@ -7,6 +7,7 @@ Unofficial scoreboard for Globodex Codex ambassadors. It tracks the profile-styl
 - Run lightweight ambassador leaderboards for workshops, office hours, demo nights, or internal community challenges.
 - Give ambassadors a concrete reason to join Globodex and bring their projects into the org.
 - Let people add or update profiles from a Codex-visible profile screenshot or manual stat values.
+- Seed an unranked invite directory from the public OpenAI Codex Ambassadors page without inventing stats.
 - Compare profiles through a calm, OpenAI-adjacent profile surface without using OpenAI branding.
 - Keep the project remixable: plain HTML, CSS, JavaScript, and a GitHub-backed JSON leaderboard.
 
@@ -62,6 +63,7 @@ Official OpenAI docs say Codex Profile displays lifetime tokens, peak tokens, st
 The shared database is the repo itself:
 
 - `data/profiles.json` is the canonical leaderboard data.
+- `data/ambassadors.json` is an unranked public directory sourced from the OpenAI Developers Codex Ambassadors page.
 - The static site reads that JSON file directly.
 - `scripts/sync-profile.mjs` uses the GitHub CLI to update the JSON in `globodex/tokenmaxx-board`.
 - Participants should be in the [Globodex GitHub org](https://github.com/globodex), or they should ask to join before syncing.
@@ -81,7 +83,7 @@ This project is intentionally a tiny static app. The ranking model is simple and
 ## Notes
 
 - Shared leaderboard data lives in `data/profiles.json`.
+- Seed ambassador directory data lives in `data/ambassadors.json`.
 - The page reads the checked-in JSON data.
-- The reset button restores the currently loaded source profiles.
 - The app is unofficial and has no dependency on Codex account data or private telemetry.
 - Seed profiles are fictional. Add real profiles manually only when people opt in.

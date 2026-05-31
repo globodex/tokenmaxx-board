@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tokenmaxx Board</title>
-    <link rel="stylesheet" href="./styles.css?v=setup-metadata">
+    <link rel="stylesheet" href="./styles.css?v=ambassador-directory">
   </head>
   <body>
     <main class="page-shell">
@@ -122,6 +122,24 @@
           </div>
         </section>
 
+        <section class="directory-section" id="ambassadors" aria-label="Codex ambassador directory">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Directory</p>
+              <h2>Ambassadors to invite</h2>
+              <p class="section-note">
+                <a href="https://developers.openai.com/community/codex-ambassadors">Public Codex Ambassador directory</a>.
+                <span id="ambassadorSourceLabel">Stats appear only after a profile sync.</span>
+              </p>
+            </div>
+            <label class="directory-search">
+              <span class="sr-only">Search ambassador directory</span>
+              <input id="ambassadorSearch" type="search" placeholder="Search ambassadors or cities">
+            </label>
+          </div>
+          <div class="directory-grid" id="ambassadorDirectory"></div>
+        </section>
+
       </section>
 
       <footer>
@@ -129,6 +147,6 @@
       </footer>
     </main>
 
-    <script src="./app.js?v=setup-metadata" type="module"></script>
+    <script src="./app.js?v=ambassador-directory" type="module"></script>
   </body>
 </html>

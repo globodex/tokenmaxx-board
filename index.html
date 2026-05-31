@@ -23,24 +23,57 @@
       <section class="landing-hero" id="top" aria-label="Join Tokenmaxx Board">
         <div class="hero-copy">
           <p class="eyebrow">Unofficial Codex ambassador league</p>
-          <h1>Run it. Rank up.</h1>
+          <h1>Tokenmaxx Board</h1>
           <p class="hero-lede">
-            A public leaderboard for Codex ambassadors, powered by the stats already visible on your profile.
+            Ranked Codex ambassadors, updated from the stats already visible on each profile.
           </p>
-
-          <div class="command-panel" aria-label="Codex update command">
-            <div class="command-label">
-              <span>Codex command</span>
-              <strong>Fastest way to participate</strong>
-            </div>
-            <code id="joinCommand">/update-stats @your.handle</code>
-            <button class="copy-button" id="copyCommand" type="button">Copy</button>
-          </div>
-
-          <p class="source-note">Persistent mode reads from Supabase. Local development falls back to the checked-in JSON seed.</p>
         </div>
 
-        <article class="featured-card" aria-label="Featured ambassador">
+        <div class="command-panel" aria-label="Codex update command">
+          <div class="command-label">
+            <span>Codex command</span>
+          <strong>Join leaderboard</strong>
+        </div>
+          <code id="joinCommand"><span>/update-stats</span> <span>@your.handle</span></code>
+          <button class="copy-button" id="copyCommand" type="button">Copy</button>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <section class="board-section" id="leaderboard" aria-label="Ambassador leaderboard">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Leaderboard</p>
+              <h2>Current standings</h2>
+            </div>
+            <div class="sort-control" role="group" aria-label="Sort leaderboard">
+              <button class="sort-button active" type="button" data-sort="score">Score</button>
+              <button class="sort-button" type="button" data-sort="lifetimeTokens">Lifetime</button>
+              <button class="sort-button" type="button" data-sort="peakTokens">Peak</button>
+              <button class="sort-button" type="button" data-sort="currentStreak">Streak</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Ambassador</th>
+                  <th scope="col">Lifetime</th>
+                  <th scope="col">Peak</th>
+                  <th scope="col">Task</th>
+                  <th scope="col">Current</th>
+                  <th scope="col">Longest</th>
+                  <th scope="col">Score</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboardRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="side-stack">
+          <article class="featured-card" aria-label="Featured ambassador">
           <div class="profile-shot-header">
             <div>
               <p class="featured-kicker">Top ambassador</p>
@@ -75,43 +108,13 @@
               <span>Longest streak</span>
             </article>
           </div>
-        </article>
-      </section>
+          </article>
 
-      <section class="content-grid">
-        <section class="board-section" id="leaderboard" aria-label="Ambassador leaderboard">
-          <div class="section-heading">
-            <h2>Ambassador leaderboard</h2>
-            <div class="sort-control" role="group" aria-label="Sort leaderboard">
-              <button class="sort-button active" type="button" data-sort="score">Score</button>
-              <button class="sort-button" type="button" data-sort="lifetimeTokens">Lifetime</button>
-              <button class="sort-button" type="button" data-sort="peakTokens">Peak</button>
-              <button class="sort-button" type="button" data-sort="currentStreak">Streak</button>
-            </div>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Ambassador</th>
-                  <th scope="col">Lifetime tokens</th>
-                  <th scope="col">Peak tokens</th>
-                  <th scope="col">Longest task</th>
-                  <th scope="col">Current streak</th>
-                  <th scope="col">Longest streak</th>
-                  <th scope="col">Score</th>
-                </tr>
-              </thead>
-              <tbody id="leaderboardRows"></tbody>
-            </table>
-          </div>
-        </section>
-
-        <aside class="participation-card" aria-label="Participation command details">
-          <h2>Run one command</h2>
-          <p id="howItWorks">The project command reads the visible Codex profile stats you provide, then updates the persistent database when Supabase credentials are present.</p>
-          <code>node scripts/update-profile.mjs --name "Ada Launch" --handle "@ada.launch" --lifetime 12.4B --peak 1.3B --task "17h 42m" --current 42 --longest 58</code>
+          <section class="participation-card" aria-label="Participation command details">
+            <h2>Run one command</h2>
+            <p id="howItWorks">The project command reads the visible Codex profile stats you provide, then updates the persistent database when Supabase credentials are present.</p>
+            <code>node scripts/update-profile.mjs --name "Ada Launch" --handle "@ada.launch" --lifetime 12.4B --peak 1.3B --task "17h 42m" --current 42 --longest 58</code>
+          </section>
         </aside>
       </section>
 

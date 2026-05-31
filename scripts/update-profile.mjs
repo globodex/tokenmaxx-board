@@ -15,7 +15,9 @@ import {
 } from "./profile-store.mjs";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const dataPath = path.join(repoRoot, "data", "profiles.json");
+const dataPath = process.env.TOKENMAXX_DATA_PATH
+  ? path.resolve(process.env.TOKENMAXX_DATA_PATH)
+  : path.join(repoRoot, "data", "profiles.json");
 
 const aliases = {
   "--current": "--current-streak",
@@ -53,6 +55,7 @@ const profile = normalizeProfile({
 });
 
 const nextDatabase = upsertProfile(readDatabase(), profile);
+fs.mkdirSync(path.dirname(dataPath), { recursive: true });
 fs.writeFileSync(dataPath, `${JSON.stringify(nextDatabase, null, 2)}\n`);
 
 if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
@@ -60,7 +63,7 @@ if (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
   console.log("Updated persistent database via Supabase REST.");
 }
 
-console.log(`Updated ${profile.name} (${profile.handle}) in data/profiles.json`);
+console.log(`Updated ${profile.name} (${profile.handle}) in ${path.relative(repoRoot, dataPath) || dataPath}`);
 console.log(`Score: ${scoreFor(profile).toLocaleString("en-US")}`);
 
 function parseArgs(argv) {

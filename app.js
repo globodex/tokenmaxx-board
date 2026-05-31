@@ -241,7 +241,7 @@ function renderAmbassadors() {
     const flag = flagFromCountryCode(ambassador.countryCode);
     const location = [ambassador.city, ambassador.country].filter(Boolean).join(", ");
     const links = ambassador.links
-      .map((link) => `<a href="${escapeHtml(link.url)}" rel="noopener noreferrer" target="_blank">${escapeHtml(link.kind)}</a>`)
+      .map(renderAmbassadorLink)
       .join("");
 
     return `
@@ -255,6 +255,56 @@ function renderAmbassadors() {
       </article>
     `;
   }).join("");
+}
+
+function renderAmbassadorLink(link) {
+  const kind = normalizeLinkKind(link.kind);
+  const label = linkLabel(kind);
+
+  return `
+    <a class="ambassador-link ambassador-link-${kind}" href="${escapeHtml(link.url)}" rel="noopener noreferrer" target="_blank" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">
+      ${linkIcon(kind)}
+      <span class="sr-only">${escapeHtml(label)}</span>
+    </a>
+  `;
+}
+
+function normalizeLinkKind(value) {
+  const kind = String(value || "site").trim().toLowerCase();
+  if (kind === "linkedin" || kind === "x") return kind;
+  return "site";
+}
+
+function linkLabel(kind) {
+  const labels = {
+    linkedin: "LinkedIn",
+    x: "X",
+    site: "Website"
+  };
+  return labels[kind] || labels.site;
+}
+
+function linkIcon(kind) {
+  const icons = {
+    linkedin: `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M6.9 9.1h3.2v9.8H6.9V9.1Zm1.6-4.9a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6Zm3.9 4.9h3.1v1.3c.5-.8 1.4-1.5 3-1.5 2.2 0 3.7 1.4 3.7 4.4v5.6H19v-5.2c0-1.4-.5-2.3-1.7-2.3-1 0-1.5.6-1.8 1.2-.1.2-.1.6-.1.9v5.4h-3.1V9.1Z" />
+      </svg>
+    `,
+    x: `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="m4.7 4.5 6.1 8.1-6.1 6.9h2.1l4.9-5.5 4.1 5.5h4.1l-6.4-8.6 5.7-6.4h-2.1l-4.5 5-3.7-5H4.7Zm3.1 1.6 9 11.8h-1.9L5.9 6.1h1.9Z" />
+      </svg>
+    `,
+    site: `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="8.2" />
+        <path d="M3.8 12h16.4M12 3.8c2.2 2.3 3.3 5 3.3 8.2s-1.1 5.9-3.3 8.2M12 3.8c-2.2 2.3-3.3 5-3.3 8.2s1.1 5.9 3.3 8.2" />
+      </svg>
+    `
+  };
+
+  return icons[kind] || icons.site;
 }
 
 function render() {

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tokenmaxx Board</title>
-    <link rel="stylesheet" href="./styles.css?v=globodex-sync">
+    <link rel="stylesheet" href="./styles.css?v=global-flags">
   </head>
   <body>
     <main class="page-shell">
@@ -33,7 +33,19 @@
             <article class="flow-card">
               <span>First-time</span>
               <h3>Claim your row</h3>
-              <p>Join Globodex, upload a Codex profile screenshot, and add an optional location or flag.</p>
+              <p>Join Globodex, upload a Codex profile screenshot, and choose a searchable location. No emoji hunting.</p>
+              <div class="setup-helper" aria-label="Optional profile location helper">
+                <label>
+                  <span>Location</span>
+                  <input id="locationInput" type="text" autocomplete="address-level2" placeholder="City or region">
+                </label>
+                <label>
+                  <span>Country</span>
+                  <input id="countryInput" type="text" list="countryOptions" autocomplete="country-name" placeholder="Search country">
+                  <datalist id="countryOptions"></datalist>
+                </label>
+                <small id="countryHint">Type a country name or two-letter code; the flag is added automatically.</small>
+              </div>
               <div class="inline-command">
                 <code id="setupCommand">/update-stats setup</code>
                 <button class="copy-button" type="button" data-copy-target="#setupCommand">Copy</button>
@@ -92,7 +104,7 @@
         <section class="participation-card" aria-label="Participation command details">
           <h2>Profile management</h2>
           <p id="howItWorks">First-time ambassadors use `/update-stats setup` to create a row with optional location metadata. Returning ambassadors use `/update-stats` to refresh only the five visible stats. Codex syncs the shared JSON file in the Globodex repo through GitHub.</p>
-          <code>npm run sync:profile -- --name "Ada Launch" --handle "@ada.launch" --location "San Francisco" --flag "🇺🇸" --lifetime 12.4B --peak 1.3B --task "17h 42m" --current 42 --longest 58</code>
+          <code>npm run sync:profile -- --name "Ada Launch" --handle "@ada.launch" --location "San Francisco" --country "United States" --lifetime 12.4B --peak 1.3B --task "17h 42m" --current 42 --longest 58</code>
         </section>
       </section>
 
@@ -101,6 +113,6 @@
       </footer>
     </main>
 
-    <script src="./app.js?v=globodex-sync" type="module"></script>
+    <script src="./app.js?v=global-flags" type="module"></script>
   </body>
 </html>

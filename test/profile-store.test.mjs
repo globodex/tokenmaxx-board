@@ -5,6 +5,7 @@ import {
   parseDays,
   parseDuration,
   parseTokenCount,
+  resolveCountry,
   upsertProfile
 } from "../scripts/profile-store.mjs";
 
@@ -24,6 +25,16 @@ describe("profile stat parsing", () => {
     assert.equal(parseDays("57 days"), 57);
     assert.equal(parseDays("65"), 65);
   });
+
+  it("resolves searchable country names and codes to flags", () => {
+    assert.deepEqual(resolveCountry("United States"), {
+      code: "US",
+      name: "United States",
+      flag: "🇺🇸"
+    });
+    assert.equal(resolveCountry("gb")?.flag, "🇬🇧");
+    assert.equal(resolveCountry("South Korea")?.code, "KR");
+  });
 });
 
 describe("profile persistence helpers", () => {
@@ -31,7 +42,7 @@ describe("profile persistence helpers", () => {
     name: "Daniel Green",
     handle: "@daniel.green",
     location: "Chicago",
-    flag: "🇺🇸",
+    country: "United States",
     lifetimeTokens: 16000000000,
     peakTokens: 1700000000,
     longestTaskMinutes: 1090,
@@ -64,6 +75,8 @@ describe("profile persistence helpers", () => {
     assert.equal(next.profiles.length, 2);
     assert.equal(next.profiles[0].id, "daniel-green");
     assert.equal(next.profiles[0].location, "Chicago");
+    assert.equal(next.profiles[0].country, "United States");
+    assert.equal(next.profiles[0].countryCode, "US");
     assert.equal(next.profiles[0].flag, "🇺🇸");
   });
 

@@ -32,7 +32,7 @@ From this repo in Codex, run:
 /update-stats setup
 ```
 
-Attach a screenshot of your Codex profile first. Codex should read the visible stats, add your optional location or flag emoji, sync the shared `data/profiles.json` file in `globodex/tokenmaxx-board`, run the local checks, and verify the page. Participants should be members of the [Globodex GitHub org](https://github.com/globodex) before they sync.
+Attach a screenshot of your Codex profile first. Codex should read the visible stats, add your optional location and searchable country, derive the flag emoji, sync the shared `data/profiles.json` file in `globodex/tokenmaxx-board`, run the local checks, and verify the page. Participants should be members of the [Globodex GitHub org](https://github.com/globodex) before they sync.
 
 After your row exists, returning updates are just:
 
@@ -47,7 +47,7 @@ node scripts/sync-profile.mjs \
   --name "Daniel Green" \
   --handle "@daniel.green" \
   --location "San Francisco" \
-  --flag "🇺🇸" \
+  --country "United States" \
   --lifetime 16B \
   --peak 1.7B \
   --task "18h 10m" \

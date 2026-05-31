@@ -33,9 +33,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background:
-    linear-gradient(180deg, #ffffff 0, var(--bg) 420px),
-    var(--bg);
+  background: var(--bg);
   color: var(--ink);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   overflow-x: hidden;
@@ -105,14 +103,13 @@ nav a.active {
   grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
   gap: clamp(24px, 4vw, 54px);
   align-items: center;
-  margin-top: 22px;
-  padding: clamp(28px, 5vw, 58px);
-  border: 1px solid #1e1e1b;
-  border-radius: 8px;
-  background:
-    linear-gradient(135deg, #111 0%, #050505 58%, #191711 100%);
+  width: 100vw;
+  margin: 0 0 0 calc(50% - 50vw);
+  padding:
+    clamp(36px, 6vw, 82px)
+    max(24px, calc((100vw - 1320px) / 2 + 24px));
+  background: #050505;
   color: #fffaf0;
-  box-shadow: var(--shadow);
   scroll-margin-top: 78px;
 }
 
@@ -176,15 +173,10 @@ h1 {
 
 .sync-panel {
   display: grid;
-  gap: 16px;
+  gap: 18px;
   width: 100%;
   max-width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 8px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.07);
   color: #fffaf0;
-  backdrop-filter: blur(18px);
 }
 
 .panel-kicker {
@@ -204,16 +196,16 @@ h1 {
 
 .flow-list {
   display: grid;
-  gap: 10px;
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .flow-card {
   display: grid;
-  gap: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 8px;
-  padding: 14px;
-  background: rgba(255, 255, 255, 0.06);
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 16px 0;
+  background: transparent;
 }
 
 .flow-card span {
@@ -239,17 +231,62 @@ h1 {
 }
 
 .primary-flow {
-  background: #fffaf0;
-  color: var(--ink);
+  color: #fffaf0;
 }
 
 .primary-flow span,
 .primary-flow p {
-  color: #68645c;
+  color: #c9c5ba;
 }
 
 .primary-flow h3 {
-  color: var(--ink);
+  color: #fffaf0;
+}
+
+.setup-helper {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+.setup-helper label {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.setup-helper label span {
+  color: #b9b5a9;
+  font-size: 0.68rem;
+  font-weight: 720;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.setup-helper input {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 0 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fffaf0;
+  outline: 0;
+}
+
+.setup-helper input::placeholder {
+  color: #8f8a7f;
+}
+
+.setup-helper input:focus {
+  border-color: rgba(255, 255, 255, 0.62);
+}
+
+.setup-helper small {
+  grid-column: 1 / -1;
+  color: #c9c5ba;
+  font-size: 0.8rem;
+  line-height: 1.35;
 }
 
 .inline-command {
@@ -280,8 +317,8 @@ h1 {
 }
 
 .primary-flow .copy-button {
-  border-color: var(--ink);
-  background: var(--ink);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
   color: #fffaf0;
   font-weight: 580;
 }
@@ -568,6 +605,7 @@ footer {
 
   .landing-hero {
     grid-template-columns: 1fr;
+    width: 100vw;
     min-height: auto;
   }
 }
@@ -583,8 +621,8 @@ footer {
 
   .landing-hero {
     gap: 14px;
-    margin-top: 12px;
-    padding: 14px;
+    margin-left: calc(50% - 50vw);
+    padding: 18px 12px 22px;
   }
 
   .landing-hero .eyebrow {
@@ -618,8 +656,7 @@ footer {
   }
 
   .sync-panel {
-    gap: 8px;
-    padding: 10px;
+    gap: 10px;
   }
 
   .panel-kicker {
@@ -631,12 +668,12 @@ footer {
   }
 
   .flow-list {
-    gap: 6px;
+    gap: 0;
   }
 
   .flow-card {
-    gap: 7px;
-    padding: 9px;
+    gap: 8px;
+    padding: 12px 0;
   }
 
   .flow-card span {
@@ -649,6 +686,21 @@ footer {
 
   .flow-card p {
     display: none;
+  }
+
+  .setup-helper {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .setup-helper input {
+    min-height: 34px;
+    padding: 0 11px;
+    font-size: 0.84rem;
+  }
+
+  .setup-helper small {
+    font-size: 0.72rem;
   }
 
   .inline-command code {

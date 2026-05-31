@@ -20,7 +20,7 @@ describe("update-profile command", () => {
       "--name", "Command Tester",
       "--handle", "@command.tester",
       "--location", "Austin",
-      "--flag", "🇺🇸",
+      "--country", "United States",
       "--lifetime", "2.4B",
       "--peak", "320M",
       "--task", "9h 15m",
@@ -42,6 +42,8 @@ describe("update-profile command", () => {
     assert.equal(database.profiles.length, 1);
     assert.equal(database.profiles[0].handle, "@command.tester");
     assert.equal(database.profiles[0].location, "Austin");
+    assert.equal(database.profiles[0].country, "United States");
+    assert.equal(database.profiles[0].countryCode, "US");
     assert.equal(database.profiles[0].flag, "🇺🇸");
     assert.equal(database.profiles[0].lifetimeTokens, 2400000000);
     assert.equal(database.profiles[0].peakTokens, 320000000);
@@ -61,7 +63,7 @@ describe("sync-profile command", () => {
       "--name", "Globodex Member",
       "--handle", "@globodex.member",
       "--location", "London",
-      "--flag", "🇬🇧",
+      "--country-code", "GB",
       "--lifetime", "3B",
       "--peak", "500M",
       "--task", "10h",
@@ -86,6 +88,8 @@ describe("sync-profile command", () => {
     assert.equal(database.profiles.length, 1);
     assert.equal(database.profiles[0].handle, "@globodex.member");
     assert.equal(database.profiles[0].location, "London");
+    assert.equal(database.profiles[0].country, "United Kingdom");
+    assert.equal(database.profiles[0].countryCode, "GB");
     assert.equal(database.profiles[0].flag, "🇬🇧");
     assert.equal(database.profiles[0].lifetimeTokens, 3000000000);
   });

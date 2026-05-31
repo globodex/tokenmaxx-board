@@ -1,3 +1,9 @@
+import {
+  COUNTRY_CODES,
+  flagFromCountryCode,
+  resolveCountry
+} from "./scripts/profile-store.mjs";
+
 const DATA_URL = "./data/profiles.json";
 
 const fallbackProfiles = [
@@ -6,6 +12,8 @@ const fallbackProfiles = [
     name: "Ada Launch",
     handle: "@ada.launch",
     location: "San Francisco",
+    country: "United States",
+    countryCode: "US",
     flag: "🇺🇸",
     lifetimeTokens: 12400000000,
     peakTokens: 1300000000,
@@ -19,6 +27,8 @@ const fallbackProfiles = [
     name: "Max Demo",
     handle: "@max.demo",
     location: "New York",
+    country: "United States",
+    countryCode: "US",
     flag: "🇺🇸",
     lifetimeTokens: 9800000000,
     peakTokens: 1100000000,
@@ -32,6 +42,8 @@ const fallbackProfiles = [
     name: "Jules Merge",
     handle: "@jules.merge",
     location: "London",
+    country: "United Kingdom",
+    countryCode: "GB",
     flag: "🇬🇧",
     lifetimeTokens: 8100000000,
     peakTokens: 980000000,
@@ -45,6 +57,8 @@ const fallbackProfiles = [
     name: "Riley Triage",
     handle: "@riley.triage",
     location: "Toronto",
+    country: "Canada",
+    countryCode: "CA",
     flag: "🇨🇦",
     lifetimeTokens: 6600000000,
     peakTokens: 760000000,
@@ -65,6 +79,11 @@ let sortKey = "lifetimeTokens";
 const rows = document.querySelector("#leaderboardRows");
 const copyButton = document.querySelector("#copyCommand");
 const joinCommand = document.querySelector("#joinCommand");
+const setupCommand = document.querySelector("#setupCommand");
+const locationInput = document.querySelector("#locationInput");
+const countryInput = document.querySelector("#countryInput");
+const countryOptions = document.querySelector("#countryOptions");
+const countryHint = document.querySelector("#countryHint");
 const sortButtons = [...document.querySelectorAll(".sort-button")];
 
 async function loadProfiles() {
@@ -97,13 +116,16 @@ function normalizeProfile(profile) {
   const id = profile.id || profileId(name);
   const lifetimeTokens = Number(profile.lifetimeTokens ?? profile.tokens ?? 0);
   const longestTaskMinutes = Number(profile.longestTaskMinutes ?? Math.round((profile.longest || 0) * 60));
+  const country = resolveCountry(profile.countryCode || profile.country);
 
   return {
     id,
     name,
     handle: profile.handle || `@${id}`,
     location: String(profile.location || "").trim(),
-    flag: String(profile.flag || "").trim(),
+    country: country?.name || String(profile.country || "").trim(),
+    countryCode: country?.code || String(profile.countryCode || "").trim().toUpperCase(),
+    flag: String(profile.flag || country?.flag || "").trim(),
     lifetimeTokens,
     peakTokens: Number(profile.peakTokens ?? Math.round(lifetimeTokens * 0.12)),
     longestTaskMinutes,
@@ -193,6 +215,50 @@ function render() {
 function profileId(name) {
   return name.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
+
+function quoteArg(value) {
+  return `"${String(value).replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"`;
+}
+
+function populateCountryOptions() {
+  if (!countryOptions) return;
+
+  const names = new Intl.DisplayNames(["en"], { type: "region" });
+  countryOptions.innerHTML = COUNTRY_CODES
+    .map((code) => ({
+      code,
+      flag: flagFromCountryCode(code),
+      name: names.of(code) || code
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((country) => `<option value="${escapeHtml(country.name)}" label="${escapeHtml(`${country.flag} ${country.code}`)}"></option>`)
+    .join("");
+}
+
+function updateSetupCommand() {
+  if (!setupCommand) return;
+
+  const parts = ["/update-stats setup"];
+  const location = locationInput?.value.trim();
+  const countryText = countryInput?.value.trim();
+  const country = resolveCountry(countryText);
+
+  if (location) parts.push("--location", quoteArg(location));
+  if (country) parts.push("--country", quoteArg(country.name));
+  else if (countryText) parts.push("--country", quoteArg(countryText));
+
+  setupCommand.textContent = parts.join(" ");
+
+  if (countryHint) {
+    countryHint.textContent = country
+      ? `${country.flag} ${country.name} will be saved with your profile.`
+      : "Type a country name or two-letter code; the flag is added automatically.";
+  }
+}
+
+populateCountryOptions();
+locationInput?.addEventListener("input", updateSetupCommand);
+countryInput?.addEventListener("input", updateSetupCommand);
 
 sortButtons.forEach((button) => {
   button.addEventListener("click", () => {

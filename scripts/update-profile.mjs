@@ -46,6 +46,8 @@ const profile = normalizeProfile({
   name: args.name,
   handle: args.handle,
   location: args.location,
+  country: args.country,
+  countryCode: args["country-code"],
   flag: args.flag,
   lifetimeTokens: parseTokenCount(args["lifetime-tokens"]),
   peakTokens: parseTokenCount(args["peak-tokens"]),
@@ -107,7 +109,7 @@ function printHelp() {
     --name "Daniel Green" \\
     --handle "@daniel.green" \\
     --location "San Francisco" \\
-    --flag "🇺🇸" \\
+    --country "United States" \\
     --lifetime-tokens 16B \\
     --peak-tokens 1.7B \\
     --longest-task "18h 10m" \\
@@ -119,7 +121,9 @@ Short aliases:
 
 Optional profile metadata:
   --location "Austin"
-  --flag "🇺🇸"
+  --country "United States"
+  --country-code US
+  --flag "🇺🇸"  # optional override; usually derived from country
 
 Shared sync:
   Use scripts/sync-profile.mjs to update globodex/tokenmaxx-board through GitHub.

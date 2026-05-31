@@ -810,11 +810,19 @@ button:focus-visible {
 }
 
 footer {
-  margin-top: 54px;
+  display: grid;
+  gap: 3px;
+  justify-items: center;
+  max-width: min(100%, 42ch);
+  margin: 54px auto 0;
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.5;
   text-align: center;
+}
+
+footer span {
+  display: block;
 }
 
 .sr-only {
@@ -1248,6 +1256,13 @@ footer {
   .person strong,
   .person small {
     overflow-wrap: anywhere;
+  }
+
+  footer {
+    max-width: 34ch;
+    margin-top: 42px;
+    font-size: 0.82rem;
+    line-height: 1.35;
   }
 
 }

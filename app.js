@@ -345,7 +345,7 @@ function applyTheme(theme) {
   const nextTheme = theme === "dark" ? "dark" : "light";
   document.documentElement.dataset.theme = nextTheme;
   if (themeToggle) themeToggle.setAttribute("aria-pressed", String(nextTheme === "dark"));
-  if (themeLabel) themeLabel.textContent = nextTheme === "dark" ? "Light" : "Dark";
+  if (themeLabel) themeLabel.textContent = nextTheme === "dark" ? "Dark" : "Light";
 }
 
 function saveTheme(theme) {

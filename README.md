@@ -1,34 +1,43 @@
 # Tokenmaxx Board
 
-Unofficial scoreboard for Globodex Codex ambassadors. It tracks the profile-style numbers visible on the Codex profile surface: lifetime tokens, peak tokens, longest task, current streak, and longest streak.
+An unofficial leaderboard for Globodex Codex ambassadors. It tracks the profile-style numbers people can see on Codex profile pages: lifetime tokens, peak tokens, longest task, current streak, and longest streak.
 
 Live board: https://globodex.github.io/tokenmaxx-board/
 
-## How To Use It
+## Participate
 
-Most people should interact with the board through Codex:
+The easiest way to update the board is through Codex. Start with a screenshot of your visible Codex profile stats.
+
+First-time setup:
 
 ```text
 /update-stats setup
 ```
 
-Attach a Codex profile screenshot when prompted. Codex reads the visible stats, asks for optional location/country, updates `data/profiles.json`, runs checks, and verifies the page.
-
-For later refreshes, use:
+Later refreshes:
 
 ```text
 /update-stats
 ```
 
-Do not invent stats. This project treats visible/profile-provided Codex profile stats as the source of truth.
+Codex reads the visible stats, can add optional location and country metadata, updates `data/profiles.json`, runs checks, and helps verify the board.
+
+## How Updates Stay Trustworthy
+
+The board is meant to be easy for the community to audit.
+
+- Stats should come from visible Codex profile screenshots or visible profile text.
+- Optional location and country fields are contributor-provided metadata.
+- If a stat is unclear, leave it out until there is a clearer screenshot or profile view.
+- `data/profiles.json` is the shared source for the ranked leaderboard.
 
 ## Submission Paths
 
-There are two supported ways to update the board.
+There are two supported ways to get an update into the board.
 
-**Direct sync for maintainers**
+### Maintainer Sync
 
-Use this when your GitHub account can write to `globodex/tokenmaxx-board`:
+Maintainers with write access can sync a profile directly:
 
 ```bash
 npm run sync:profile -- \
@@ -43,19 +52,19 @@ npm run sync:profile -- \
   --longest 65
 ```
 
-That command updates the shared `data/profiles.json` file in GitHub. GitHub Pages deploys from the latest `main` branch.
+That command updates `data/profiles.json` in GitHub. GitHub Pages publishes from the latest `main` branch.
 
-**Pull request submissions**
+### Pull Request Submissions
 
-Use this when someone submits a leaderboard update through a PR. The daily automation only auto-merges PRs that:
+Community submissions can come through pull requests. The daily automation can merge straightforward leaderboard updates when a PR:
 
-- target `main`
-- are not drafts
-- change only `data/profiles.json`
-- pass `npm run check`
-- merge cleanly
+- targets `main`
+- is not a draft
+- changes only `data/profiles.json`
+- passes `npm run check`
+- merges cleanly
 
-PRs that touch app code, workflows, README text, or other data files are intentionally skipped for manual review.
+PRs that touch app code, workflows, docs, or other data files wait for a human review. That keeps the auto-merge path focused on simple leaderboard data updates.
 
 ## Daily Automation
 
@@ -101,15 +110,15 @@ npm run verify:pages
 
 ## Data Model
 
-- `data/profiles.json` is the canonical ranked leaderboard data.
+- `data/profiles.json` is the ranked leaderboard data.
 - `data/ambassadors.json` is an unranked public directory sourced from the OpenAI Developers Codex Ambassadors page.
 - Lifetime tokens are the default ranking lens.
 - Peak tokens, longest task, current streak, and longest streak are secondary sort modes.
 
-The app is plain HTML, CSS, and JavaScript. There is no private telemetry dependency and no public Codex stats API dependency.
+The app is plain HTML, CSS, and JavaScript. It does not depend on private telemetry or a public Codex stats API.
 
 ## Maintainer Notes
 
 GitHub Pages should be configured to publish with GitHub Actions, not the legacy branch source. GitHub documents that commits pushed by a workflow using the default `GITHUB_TOKEN` do not trigger a legacy Pages build, so this repo deploys Pages explicitly from Actions.
 
-Before changing the automation, keep the auto-merge criteria narrow. Leaderboard PRs should stay data-only; code and workflow changes should remain human-reviewed.
+Please keep the auto-merge criteria narrow. Leaderboard PRs should stay data-only, while code and workflow changes should remain human-reviewed.

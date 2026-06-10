@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-07T02:48:13.082Z",
+  "updatedAt": "2026-06-10T04:10:54.339Z",
   "profiles": [
     {
       "id": "piyalitt-ittichaiwong",
@@ -25,10 +25,10 @@
       "country": "United States",
       "countryCode": "US",
       "flag": "🇺🇸",
-      "lifetimeTokens": 38500000000,
+      "lifetimeTokens": 43600000000,
       "peakTokens": 3800000000,
       "longestTaskMinutes": 431,
-      "currentStreak": 34,
+      "currentStreak": 37,
       "longestStreak": 61,
       "activitySeed": 1200
     },

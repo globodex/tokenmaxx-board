@@ -1,7 +1,22 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-15T13:35:59.235Z",
+  "updatedAt": "2026-06-26T12:02:50.988Z",
   "profiles": [
+    {
+      "id": "michael-wall",
+      "name": "Michael Wall",
+      "handle": "@soundformovement",
+      "location": "Salt Lake City",
+      "country": "United States",
+      "countryCode": "US",
+      "flag": "🇺🇸",
+      "lifetimeTokens": 70400000000,
+      "peakTokens": 3800000000,
+      "longestTaskMinutes": 480,
+      "currentStreak": 54,
+      "longestStreak": 61,
+      "activitySeed": 1200
+    },
     {
       "id": "piyalitt-ittichaiwong",
       "name": "Piyalitt Ittichaiwong",
@@ -16,21 +31,6 @@
       "currentStreak": 136,
       "longestStreak": 136,
       "activitySeed": 2215
-    },
-    {
-      "id": "michael-wall",
-      "name": "Michael Wall",
-      "handle": "@soundformovement",
-      "location": "Salt Lake City",
-      "country": "United States",
-      "countryCode": "US",
-      "flag": "🇺🇸",
-      "lifetimeTokens": 51100000000,
-      "peakTokens": 3800000000,
-      "longestTaskMinutes": 432,
-      "currentStreak": 42,
-      "longestStreak": 61,
-      "activitySeed": 1200
     },
     {
       "id": "adrianmelic",

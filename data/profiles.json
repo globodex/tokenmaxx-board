@@ -93,6 +93,20 @@
       "activitySeed": 1195
     },
     {
+      "id": "chamuth-senura",
+      "name": "Chamuth Senura",
+      "handle": "@chamuth-senura",
+      "location": "",
+      "country": "Sri Lanka",
+      "countryCode": "LK",
+      "flag": "🇱🇰",
+      "lifetimeTokens": 14600000000,
+      "peakTokens": 823300000,
+      "longestTaskMinutes": 98,
+      "currentStreak": 10,
+      "longestStreak": 11
+    },
+    {
       "id": "wushuang-arvin",
       "name": "之元",
       "handle": "@wushuang_arvin",

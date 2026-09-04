@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-03T17:36:57.977Z",
+  "updatedAt": "2026-09-04T00:00:00.000Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -135,6 +135,21 @@
       "currentStreak": 13,
       "longestStreak": 45,
       "activitySeed": 538
+    },
+    {
+      "id": "jizheng",
+      "name": "Jizheng",
+      "handle": "@wanjizheng",
+      "location": "",
+      "country": "",
+      "countryCode": "",
+      "flag": "",
+      "lifetimeTokens": 9600000000,
+      "peakTokens": 506300000,
+      "longestTaskMinutes": 413,
+      "currentStreak": 9,
+      "longestStreak": 46,
+      "activitySeed": 751
     },
     {
       "id": "lordboba",

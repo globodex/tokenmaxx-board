@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-04T00:00:00.000Z",
+  "updatedAt": "2026-09-11T05:20:40.979Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -78,6 +78,21 @@
       "activitySeed": 751
     },
     {
+      "id": "wushuang-arvin",
+      "name": "之元",
+      "handle": "@wushuang_arvin",
+      "location": "",
+      "country": "",
+      "countryCode": "",
+      "flag": "",
+      "lifetimeTokens": 16356119148,
+      "peakTokens": 618466624,
+      "longestTaskMinutes": 1906,
+      "currentStreak": 22,
+      "longestStreak": 22,
+      "activitySeed": 1471
+    },
+    {
       "id": "daniel-green",
       "name": "Daniel Green",
       "handle": "@daniel.green",
@@ -105,21 +120,6 @@
       "longestTaskMinutes": 98,
       "currentStreak": 10,
       "longestStreak": 11
-    },
-    {
-      "id": "wushuang-arvin",
-      "name": "之元",
-      "handle": "@wushuang_arvin",
-      "location": "",
-      "country": "",
-      "countryCode": "",
-      "flag": "",
-      "lifetimeTokens": 14158817452,
-      "peakTokens": 618466624,
-      "longestTaskMinutes": 1906,
-      "currentStreak": 15,
-      "longestStreak": 17,
-      "activitySeed": 1471
     },
     {
       "id": "wencm",

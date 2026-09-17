@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-11T05:20:40.979Z",
+  "updatedAt": "2026-09-17T10:59:00.000Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -150,6 +150,20 @@
       "currentStreak": 9,
       "longestStreak": 46,
       "activitySeed": 751
+    },
+    {
+      "id": "tejas",
+      "name": "Tejas",
+      "handle": "@detergg",
+      "location": "",
+      "country": "",
+      "countryCode": "",
+      "flag": "",
+      "lifetimeTokens": 8398000000,
+      "peakTokens": 902000000,
+      "longestTaskMinutes": 612,
+      "currentStreak": 24,
+      "longestStreak": 24
     },
     {
       "id": "lordboba",

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-20T01:23:33.833Z",
+  "updatedAt": "2026-09-30T08:34:02.612Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -46,6 +46,21 @@
       "currentStreak": 85,
       "longestStreak": 85,
       "activitySeed": 1145
+    },
+    {
+      "id": "christos-moshovitis",
+      "name": "Christos Moshovitis",
+      "handle": "@christospoachgroupin",
+      "location": "North Potomac",
+      "country": "United States",
+      "countryCode": "US",
+      "flag": "🇺🇸",
+      "lifetimeTokens": 26700000000,
+      "peakTokens": 2600000000,
+      "longestTaskMinutes": 1018,
+      "currentStreak": 30,
+      "longestStreak": 30,
+      "activitySeed": 2033
     },
     {
       "id": "no",

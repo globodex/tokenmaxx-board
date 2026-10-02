@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-30T08:34:02.612Z",
+  "updatedAt": "2026-10-02T06:53:56.405Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -63,6 +63,21 @@
       "activitySeed": 2033
     },
     {
+      "id": "wushuang-arvin",
+      "name": "之元",
+      "handle": "@wushuang_arvin",
+      "location": "",
+      "country": "",
+      "countryCode": "",
+      "flag": "",
+      "lifetimeTokens": 23674786483,
+      "peakTokens": 922391456,
+      "longestTaskMinutes": 1906,
+      "currentStreak": 43,
+      "longestStreak": 43,
+      "activitySeed": 1471
+    },
+    {
       "id": "no",
       "name": "no",
       "handle": "@ecoregreso",
@@ -76,21 +91,6 @@
       "currentStreak": 42,
       "longestStreak": 42,
       "activitySeed": 221
-    },
-    {
-      "id": "wushuang-arvin",
-      "name": "之元",
-      "handle": "@wushuang_arvin",
-      "location": "",
-      "country": "",
-      "countryCode": "",
-      "flag": "",
-      "lifetimeTokens": 20043719664,
-      "peakTokens": 922391456,
-      "longestTaskMinutes": 1906,
-      "currentStreak": 31,
-      "longestStreak": 31,
-      "activitySeed": 1471
     },
     {
       "id": "david-marquez",

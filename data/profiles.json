@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-02T06:53:56.405Z",
+  "updatedAt": "2026-10-04T21:33:38Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -91,6 +91,21 @@
       "currentStreak": 42,
       "longestStreak": 42,
       "activitySeed": 221
+    },
+    {
+      "id": "shaun-roselt",
+      "name": "Shaun Roselt",
+      "handle": "@shaunroselt",
+      "location": "",
+      "country": "South Africa",
+      "countryCode": "ZA",
+      "flag": "🇿🇦",
+      "lifetimeTokens": 19600000000,
+      "peakTokens": 4300000000,
+      "longestTaskMinutes": 966,
+      "currentStreak": 16,
+      "longestStreak": 20,
+      "activitySeed": 1253
     },
     {
       "id": "david-marquez",

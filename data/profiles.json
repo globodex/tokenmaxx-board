@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-04T21:33:38Z",
+  "updatedAt": "2026-10-07T03:03:16.153Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -224,6 +224,21 @@
       "currentStreak": 44,
       "longestStreak": 44,
       "activitySeed": 837
+    },
+    {
+      "id": "jesse-l-shelley",
+      "name": "Jesse L. Shelley",
+      "handle": "@sleepparalysis",
+      "location": "",
+      "country": "United States",
+      "countryCode": "US",
+      "flag": "🇺🇸",
+      "lifetimeTokens": 1900000000,
+      "peakTokens": 89500000,
+      "longestTaskMinutes": 133,
+      "currentStreak": 8,
+      "longestStreak": 20,
+      "activitySeed": 1494
     }
   ]
 }

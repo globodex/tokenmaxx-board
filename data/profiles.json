@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-16T16:06:02.010Z",
+  "updatedAt": "2026-10-19T17:19:12.299Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -47,6 +47,21 @@
   "activitySeed": 1187
 },
     {
+      "id": "wushuang-arvin",
+      "name": "之元",
+      "handle": "@wushuang_arvin",
+      "location": "",
+      "country": "",
+      "countryCode": "",
+      "flag": "",
+      "lifetimeTokens": 33863483039,
+      "peakTokens": 1403004349,
+      "longestTaskMinutes": 3379,
+      "currentStreak": 61,
+      "longestStreak": 61,
+      "activitySeed": 1471
+    },
+    {
       "id": "adrianmelic",
       "name": "adrianmelic",
       "handle": "@adrianmelic",
@@ -60,21 +75,6 @@
       "currentStreak": 85,
       "longestStreak": 85,
       "activitySeed": 1145
-    },
-    {
-      "id": "wushuang-arvin",
-      "name": "之元",
-      "handle": "@wushuang_arvin",
-      "location": "",
-      "country": "",
-      "countryCode": "",
-      "flag": "",
-      "lifetimeTokens": 30245155487,
-      "peakTokens": 1403004349,
-      "longestTaskMinutes": 1906,
-      "currentStreak": 58,
-      "longestStreak": 58,
-      "activitySeed": 1471
     },
     {
       "id": "christos-moshovitis",

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-19T17:19:12.299Z",
+  "updatedAt": "2026-10-20T17:49:23.000Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -18,6 +18,21 @@
       "activitySeed": 1200
     },
     {
+      "id": "bluebowls3629",
+      "name": "quanstudios",
+      "handle": "@quanstudios",
+      "location": "",
+      "country": "Australia",
+      "countryCode": "AU",
+      "flag": "🇦🇺",
+      "lifetimeTokens": 61200000000,
+      "peakTokens": 5800000000,
+      "longestTaskMinutes": 2021,
+      "currentStreak": 27,
+      "longestStreak": 27,
+      "activitySeed": 1187
+    },
+    {
       "id": "piyalitt-ittichaiwong",
       "name": "Piyalitt Ittichaiwong",
       "handle": "@piyalitt",
@@ -31,21 +46,7 @@
       "currentStreak": 136,
       "longestStreak": 136,
       "activitySeed": 2215
-    },{
-  "id": "bluebowls3629",
-  "name": "bluebowls3629",
-  "handle": "@bluebowls3629",
-  "location": "",
-  "country": "Australia",
-  "countryCode": "AU",
-  "flag": "🇦🇺",
-  "lifetimeTokens": 52600000000,
-  "peakTokens": 5800000000,
-  "longestTaskMinutes": 1081,
-  "currentStreak": 17,
-  "longestStreak": 21,
-  "activitySeed": 1187
-},
+    },
     {
       "id": "wushuang-arvin",
       "name": "之元",

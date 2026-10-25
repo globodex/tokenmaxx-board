@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-20T17:49:23.000Z",
+  "updatedAt": "2026-10-25T21:37:33.117Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -16,6 +16,20 @@
       "currentStreak": 7,
       "longestStreak": 61,
       "activitySeed": 1200
+    },
+    {
+      "id": "josh-liljenquist",
+      "name": "Josh Liljenquist",
+      "handle": "@kb4fhcg5by",
+      "location": "Minnesota",
+      "country": "United States",
+      "countryCode": "US",
+      "flag": "🇺🇸",
+      "lifetimeTokens": 64000000000,
+      "peakTokens": 3000000000,
+      "longestTaskMinutes": 659,
+      "currentStreak": 108,
+      "longestStreak": 108
     },
     {
       "id": "bluebowls3629",

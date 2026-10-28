@@ -77,6 +77,21 @@
       "activitySeed": 1471
     },
     {
+      "id": "vincent-defilippo",
+      "name": "Vincent DeFilippo",
+      "handle": "@ecoregreso",
+      "location": "Los Angeles",
+      "country": "USA",
+      "countryCode": "",
+      "flag": "🇺🇸",
+      "lifetimeTokens": 31600000000,
+      "peakTokens": 1400000000,
+      "longestTaskMinutes": 1262,
+      "currentStreak": 34,
+      "longestStreak": 44,
+      "activitySeed": 221
+    },
+    {
       "id": "adrianmelic",
       "name": "adrianmelic",
       "handle": "@adrianmelic",
@@ -105,21 +120,6 @@
       "currentStreak": 30,
       "longestStreak": 30,
       "activitySeed": 2033
-    },
-    {
-      "id": "no",
-      "name": "no",
-      "handle": "@ecoregreso",
-      "location": "",
-      "country": "",
-      "countryCode": "",
-      "flag": "",
-      "lifetimeTokens": 20600000000,
-      "peakTokens": 984600000,
-      "longestTaskMinutes": 1191,
-      "currentStreak": 42,
-      "longestStreak": 42,
-      "activitySeed": 221
     },
     {
       "id": "shaun-roselt",

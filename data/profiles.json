@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-25T21:37:33.117Z",
+  "updatedAt": "2026-10-30T02:55:04.000Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -16,6 +16,16 @@
       "currentStreak": 7,
       "longestStreak": 61,
       "activitySeed": 1200
+    },
+    {
+      "id": "elias-george",
+      "name": "Elias George",
+      "handle": "@earnitsis",
+      "lifetimeTokens": 65000000000,
+      "peakTokens": 4500000000,
+      "longestTaskMinutes": 1305,
+      "currentStreak": 61,
+      "longestStreak": 61
     },
     {
       "id": "josh-liljenquist",

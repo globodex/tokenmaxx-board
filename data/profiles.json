@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-30T02:55:04.000Z",
+  "updatedAt": "2026-11-06T12:14:13.748Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -72,6 +72,21 @@
       "activitySeed": 2215
     },
     {
+      "id": "vincent-defilippo",
+      "name": "Vincent DeFilippo",
+      "handle": "@ecoregreso",
+      "location": "Los Angeles",
+      "country": "USA",
+      "countryCode": "",
+      "flag": "🇺🇸",
+      "lifetimeTokens": 35900000000,
+      "peakTokens": 1500000000,
+      "longestTaskMinutes": 1262,
+      "currentStreak": 43,
+      "longestStreak": 44,
+      "activitySeed": 221
+    },
+    {
       "id": "wushuang-arvin",
       "name": "之元",
       "handle": "@wushuang_arvin",
@@ -85,21 +100,6 @@
       "currentStreak": 61,
       "longestStreak": 61,
       "activitySeed": 1471
-    },
-    {
-      "id": "vincent-defilippo",
-      "name": "Vincent DeFilippo",
-      "handle": "@ecoregreso",
-      "location": "Los Angeles",
-      "country": "USA",
-      "countryCode": "",
-      "flag": "🇺🇸",
-      "lifetimeTokens": 31600000000,
-      "peakTokens": 1400000000,
-      "longestTaskMinutes": 1262,
-      "currentStreak": 34,
-      "longestStreak": 44,
-      "activitySeed": 221
     },
     {
       "id": "adrianmelic",

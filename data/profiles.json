@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-30T02:55:04.000Z",
+  "updatedAt": "2026-11-06T08:55:06.422Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -250,6 +250,21 @@
       "longestStreak": 24
     },
     {
+      "id": "jesse-l-shelley",
+      "name": "sleepparalysis",
+      "handle": "@sleepparalysis",
+      "location": "",
+      "country": "United States",
+      "countryCode": "US",
+      "flag": "🇺🇸",
+      "lifetimeTokens": 7400000000,
+      "peakTokens": 1000000000,
+      "longestTaskMinutes": 278,
+      "currentStreak": 38,
+      "longestStreak": 38,
+      "activitySeed": 1494
+    },
+    {
       "id": "lordboba",
       "name": "lordboba",
       "handle": "@lordboba",
@@ -277,21 +292,6 @@
       "longestTaskMinutes": 552,
       "currentStreak": 21,
       "longestStreak": 51
-    },
-    {
-      "id": "jesse-l-shelley",
-      "name": "Jesse L. Shelley",
-      "handle": "@sleepparalysis",
-      "location": "",
-      "country": "United States",
-      "countryCode": "US",
-      "flag": "🇺🇸",
-      "lifetimeTokens": 1900000000,
-      "peakTokens": 89500000,
-      "longestTaskMinutes": 133,
-      "currentStreak": 8,
-      "longestStreak": 20,
-      "activitySeed": 1494
     }
   ]
 }

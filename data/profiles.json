@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-09T20:05:44.943Z",
+  "updatedAt": "2026-11-12T21:45:44.535Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -70,6 +70,21 @@
       "currentStreak": 136,
       "longestStreak": 136,
       "activitySeed": 2215
+    },
+    {
+      "id": "dynamicgoat",
+      "name": "dynamicgoat",
+      "handle": "@dynamicgoat",
+      "location": "",
+      "country": "",
+      "countryCode": "",
+      "flag": "",
+      "lifetimeTokens": 42100000000,
+      "peakTokens": 4500000000,
+      "longestTaskMinutes": 4740,
+      "currentStreak": 36,
+      "longestStreak": 36,
+      "activitySeed": 1168
     },
     {
       "id": "vincent-defilippo",

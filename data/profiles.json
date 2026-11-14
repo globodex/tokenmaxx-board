@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-12T21:45:44.535Z",
+  "updatedAt": "2026-11-17T13:36:47.000Z",
   "profiles": [
     {
       "id": "michael-wall",
@@ -72,6 +72,21 @@
       "activitySeed": 2215
     },
     {
+      "id": "wushuang-arvin",
+      "name": "之元",
+      "handle": "@wushuang_arvin",
+      "location": "",
+      "country": "",
+      "countryCode": "",
+      "flag": "",
+      "lifetimeTokens": 46123578285,
+      "peakTokens": 1401070956,
+      "longestTaskMinutes": 3379,
+      "currentStreak": 89,
+      "longestStreak": 89,
+      "activitySeed": 1471
+    },
+    {
       "id": "dynamicgoat",
       "name": "dynamicgoat",
       "handle": "@dynamicgoat",
@@ -100,21 +115,6 @@
       "currentStreak": 43,
       "longestStreak": 44,
       "activitySeed": 221
-    },
-    {
-      "id": "wushuang-arvin",
-      "name": "之元",
-      "handle": "@wushuang_arvin",
-      "location": "",
-      "country": "",
-      "countryCode": "",
-      "flag": "",
-      "lifetimeTokens": 33863483039,
-      "peakTokens": 1403004349,
-      "longestTaskMinutes": 3379,
-      "currentStreak": 61,
-      "longestStreak": 61,
-      "activitySeed": 1471
     },
     {
       "id": "adrianmelic",
